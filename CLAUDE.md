@@ -53,6 +53,8 @@ scripts/dc.sh php ../scripts/usuario-teste.php criar|apagar          # usuário 
 
 - O `dc.sh` roda como o usuário `ipsim` (o mesmo do Apache). Não passe `$variáveis` direto pelo `wsl.exe` (ver `LICOES.md`): use um script `.php` em `scripts/`.
 - Sem `npm run build`, as telas dão erro 500 (falta o manifest do Vite).
+- **Testes com `APP_URL` próprio:** o `sistema/phpunit.xml` fixa `APP_URL=http://localhost` e `ASSET_URL` vazio. Com o `/receitas` do `.env`, as requisições dos testes viram `/receitas/login` e todas as rotas dão 404 (aconteceu em 2026-11-27: 22 testes falharam).
+- **Antes de commitar, rode `scripts/dc.sh php artisan test` sozinho e confira o código de saída** (0 = tudo passou). Não encadeie com `| grep ... &&`: o `grep` dá certo mesmo com teste falhando, e o commit sai quebrado (aconteceu no passo 10).
 - **`ASSET_URL=/receitas` no `sistema/.env` de testes** (o app fica num subcaminho): sem isso, o Vite compila o CSS apontando as fontes para `/build/...` e elas não carregam (o título sai em fonte comum). Na produção (raiz do endereço) `ASSET_URL` fica vazio, e o `npm run build` tem de rodar com o `.env` de produção.
 - Visual: cores em `sistema/resources/css/tema.css` (`--bb-*` e `--tipo-*`, claro e `.dark`), classes Tailwind `bg-bb-*`, `text-bb-*`, `font-titulo` (Unbounded); lista de tipos em `sistema/resources/js/lib/tipos.ts`. Página de conferência `/amostra` (só no ambiente local).
 - Endereço `/receitas` no Docker de testes: `Alias` em `C:\Projetos AI\Teste-de-apps-pre-producao\config\sites.conf` e `servidor.conf` (backups `.bak-2026-11-27`).
