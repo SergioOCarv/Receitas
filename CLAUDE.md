@@ -28,7 +28,7 @@ docs/
 pesquisa/        testes descartáveis da Fase 0  [a partir do passo 1]
 sistema/         app Laravel (endereço de testes: http://localhost:8085/receitas)
 producao/        Docker e scripts de produção  [a partir do passo 12]
-scripts/         dc.sh (comando no contêiner de testes), criar-banco.php, capturar.mjs (capturas de celular), usuario-teste.php; gerar-icones.mjs a partir do passo 11
+scripts/         dc.sh (comando no contêiner de testes), criar-banco.php, capturar.mjs (capturas de celular), usuario-teste.php, gerar-icones.mjs
 package.json     ferramentas da raiz (playwright-core para as capturas); o app tem o próprio em sistema/
 ```
 
@@ -49,6 +49,7 @@ node scripts/capturar.mjs --url ... --saida ... --dupla              # claro e e
 node scripts/capturar.mjs --url ... --saida ... --inteira            # página inteira
 node scripts/capturar.mjs --url http://localhost:8085/receitas/dashboard --login teste@bombocado.local:senha-de-teste-123 --saida ...
 scripts/dc.sh php ../scripts/usuario-teste.php criar|apagar          # usuário de teste das capturas (só fora da produção)
+node scripts/gerar-icones.mjs                                        # PNGs do ícone a partir de sistema/resources/icone/*.svg
 ```
 
 - O `dc.sh` roda como o usuário `ipsim` (o mesmo do Apache). Não passe `$variáveis` direto pelo `wsl.exe` (ver `LICOES.md`): use um script `.php` em `scripts/`.
@@ -56,6 +57,7 @@ scripts/dc.sh php ../scripts/usuario-teste.php criar|apagar          # usuário 
 - **Testes com `APP_URL` próprio:** o `sistema/phpunit.xml` fixa `APP_URL=http://localhost` e `ASSET_URL` vazio. Com o `/receitas` do `.env`, as requisições dos testes viram `/receitas/login` e todas as rotas dão 404 (aconteceu em 2026-11-27: 22 testes falharam).
 - **Antes de commitar, rode `scripts/dc.sh php artisan test` sozinho e confira o código de saída** (0 = tudo passou). Não encadeie com `| grep ... &&`: o `grep` dá certo mesmo com teste falhando, e o commit sai quebrado (aconteceu no passo 10).
 - **`ASSET_URL=/receitas` no `sistema/.env` de testes** (o app fica num subcaminho): sem isso, o Vite compila o CSS apontando as fontes para `/build/...` e elas não carregam (o título sai em fonte comum). Na produção (raiz do endereço) `ASSET_URL` fica vazio, e o `npm run build` tem de rodar com o `.env` de produção.
+- PWA (passo 11): `sistema/public/manifest.webmanifest` e `sistema/public/sw.js` feitos à mão (o `vite-plugin-pwa` gera o service worker em `public/build/`, que não controlaria o app todo); endereços relativos (`./`) para servir em `/receitas` e na raiz; registro do service worker e ícones em `sistema/resources/views/app.blade.php` com `asset()`. Ícones em `sistema/public/icones/`, `apple-touch-icon.png`, `favicon.svg` e `favicon-32.png`. O `sw.js` ainda não guarda nada (cache na Fase 10).
 - Visual: cores em `sistema/resources/css/tema.css` (`--bb-*` e `--tipo-*`, claro e `.dark`), classes Tailwind `bg-bb-*`, `text-bb-*`, `font-titulo` (Unbounded); lista de tipos em `sistema/resources/js/lib/tipos.ts`. Página de conferência `/amostra` (só no ambiente local).
 - Endereço `/receitas` no Docker de testes: `Alias` em `C:\Projetos AI\Teste-de-apps-pre-producao\config\sites.conf` e `servidor.conf` (backups `.bak-2026-11-27`).
 
@@ -75,8 +77,8 @@ scripts/dc.sh php ../scripts/usuario-teste.php criar|apagar          # usuário 
 
 ## Pendências e próximos passos
 
-Ver `docs/CHECKLIST.md`. Próximo: passo 11.
+Ver `docs/CHECKLIST.md`. Próximo: passo 12.
 
 ## Onde paramos
 
-- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 a 7 feitos (Fase 0 concluída) (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). Funnel liberado e testado de fora (página de teste aberta pelo 4G e por um celular sem Tailscale; hoje desligado). Chave da API da Anthropic no `.env` da raiz (nome `bom-bocado`, escopo "Espaço de trabalho padrão", **vence em 01/07/2027**: trocar antes; aviso 30 dias antes previsto no passo 63), validada (lista de modelos = 200; Haiku disponível: `claude-haiku-5-5`). Passo 7 feito (`pesquisa/relatorio-ia.md`): 9/9 receitas extraídas pelo Haiku 5.5 com saída estruturada, média US$ 0,0009 (≈ R$ 0,005) por receita; no app, usar o SDK oficial PHP. **Fase 0 concluída.** Passo 8 feito: Laravel 12.74 em `sistema/`, sem cadastro aberto (27 testes passando), banco `receitas` no MariaDB de testes, `localhost:8085/receitas` respondendo. Passo 9 feito: `scripts/capturar.mjs` (celular 360x760, `--dupla` claro/escuro, `--login`). Passo 10 feito: tema visual (cores, fontes Unbounded/DM Sans servidas pelo app, claro e escuro), página `/amostra`. **Próximo: passo 11** (ícone e PWA básico). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
+- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 a 7 feitos (Fase 0 concluída) (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). Funnel liberado e testado de fora (página de teste aberta pelo 4G e por um celular sem Tailscale; hoje desligado). Chave da API da Anthropic no `.env` da raiz (nome `bom-bocado`, escopo "Espaço de trabalho padrão", **vence em 01/07/2027**: trocar antes; aviso 30 dias antes previsto no passo 63), validada (lista de modelos = 200; Haiku disponível: `claude-haiku-5-5`). Passo 7 feito (`pesquisa/relatorio-ia.md`): 9/9 receitas extraídas pelo Haiku 5.5 com saída estruturada, média US$ 0,0009 (≈ R$ 0,005) por receita; no app, usar o SDK oficial PHP. **Fase 0 concluída.** Passo 8 feito: Laravel 12.74 em `sistema/`, sem cadastro aberto (27 testes passando), banco `receitas` no MariaDB de testes, `localhost:8085/receitas` respondendo. Passo 9 feito: `scripts/capturar.mjs` (celular 360x760, `--dupla` claro/escuro, `--login`). Passo 10 feito: tema visual (cores, fontes Unbounded/DM Sans servidas pelo app, claro e escuro), página `/amostra`. Passo 11 feito: ícone B em PNG (normal e maskable), manifest, service worker mínimo; Edge confirma o app instalável. **Fase 1 concluída. Próximo: passo 12** (arquivos de produção: Dockerfile, compose, publicar.ps1, no modelo do ERP-IPSim). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.

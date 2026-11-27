@@ -25,7 +25,7 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 - [x] 8 Laravel no Docker de testes
 - [x] 9 Capturas de tela de celular
 - [x] 10 Tema visual
-- [ ] 11 Ícone e PWA básico
+- [x] 11 Ícone e PWA básico
 
 ## Fase 2 – Publicação inicial
 - [ ] 12 Arquivos de produção

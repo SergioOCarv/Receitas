@@ -1,8 +1,10 @@
+<img src="sistema/public/icones/icone-192.png" alt="Ícone do Bom Bocado: uma rosquinha de chocolate mordida, sobre fundo azul" width="96" align="right">
+
 # Bom Bocado
 
 Um livro de receitas para o celular Android. Viu uma receita no Instagram, no YouTube ou num site? Toque em **Compartilhar → Bom Bocado** e pronto: o app lê o link, monta a receita com ingredientes e modo de preparo, escolhe os tipos (quente, gelado, assado, bebida…) e guarda no seu livro. Sem formulário e sem perguntas.
 
-> **Situação:** em construção. A fase de testes de viabilidade terminou em 27/11/2026. O esqueleto do app já existe (Laravel com login, sem cadastro aberto) e ainda tem o visual padrão. O andamento está no [roteiro](#roteiro) abaixo.
+> **Situação:** em construção. Os testes de viabilidade terminaram e o esqueleto do app está pronto: login sem cadastro aberto, visual do Bom Bocado nos temas claro e escuro, ícone e instalação como app (PWA). A próxima etapa é publicar a primeira versão para instalar no celular. O andamento está no [roteiro](#roteiro) abaixo.
 
 ![Telas do Bom Bocado nos temas claro e escuro](docs/prototipos/telas-bom-bocado.png)
 
@@ -89,7 +91,7 @@ Cada caixa é um contêiner Docker, menos o Funnel e a API da Anthropic, que sã
 
 ## Rodando o projeto
 
-O app está no começo e ainda não tem as telas do Bom Bocado, mas já roda. Você precisa de PHP 8.5 com Composer, Node 26 e um MariaDB 11.4 (ou outro banco aceito pelo Laravel).
+O app está no começo: tem o login, o visual e a instalação como app, mas ainda não tem as telas de receitas. Você precisa de PHP 8.5 com Composer, Node 26 e um MariaDB 11.4 (ou outro banco aceito pelo Laravel).
 
 ```bash
 cd sistema
@@ -101,6 +103,8 @@ npm install && npm run build
 php artisan serve               # abre em http://localhost:8000
 php artisan test                # roda os testes
 ```
+
+Os ícones são gerados a partir dos desenhos em `sistema/resources/icone/` com `node scripts/gerar-icones.mjs` (na raiz, depois de `npm install`; usa o Microsoft Edge instalado).
 
 Não há cadastro aberto: por enquanto, crie um usuário pelo `php artisan tinker`. O comando para criar o administrador chega na Fase 3.
 
@@ -132,8 +136,8 @@ O trabalho está dividido em 12 fases e 77 passos pequenos, cada um feito e test
 | Fase | O que entrega | Situação |
 |---|---|---|
 | 0 | Testes de viabilidade: leitura de Instagram, YouTube e sites; custo da IA; publicação pela internet | Concluída |
-| 1 | Esqueleto do app, tema visual (claro e escuro), ícone e PWA | Em andamento |
-| 2 | Primeira publicação: o app instalável no celular | |
+| 1 | Esqueleto do app, tema visual (claro e escuro), ícone e PWA | Concluída |
+| 2 | Primeira publicação: o app instalável no celular | Em andamento |
 | 3 | Contas: login, convites, esqueci a senha, foto de perfil | |
 | 4 | Receitas feitas à mão, com foto | |
 | 5 | Lista, busca e filtros | |

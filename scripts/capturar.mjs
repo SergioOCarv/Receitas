@@ -64,10 +64,11 @@ async function juntar(navegador, imagens, a) {
     <div style="font:600 14px system-ui">${titulo}</div>
     <img src="data:image/png;base64,${png.toString('base64')}" style="width:${a.largura}px;display:block;border:1px solid #ccc;border-radius:12px"></div>`;
   await pagina.setContent(`<body style="margin:0;background:#e5e5e5">
-    <div style="padding:16px 16px 24px;display:flex;gap:16px;width:max-content;box-sizing:content-box">
+    <div id="montagem" style="background:#e5e5e5;padding:16px 16px 24px;display:flex;gap:16px;width:max-content;box-sizing:content-box">
     ${bloco('Tema claro', imagens[0])}${bloco('Tema escuro', imagens[1])}</div></body>`);
   await pagina.waitForLoadState('load');
-  const resultado = await pagina.screenshot({ fullPage: true });
+  // Captura do bloco, não da página inteira: a página inteira falha às vezes no Edge sem tela.
+  const resultado = await pagina.locator('#montagem').screenshot();
   await pagina.close();
   return resultado;
 }

@@ -299,6 +299,8 @@ Antes, carregar a skill `claude-api`, para confirmar o ID do modelo, o preço e 
 
 ### Passo 11: ícone e PWA básico
 
+> **Feito de outro jeito (2026-11-27):** sem o `vite-plugin-pwa`, porque ele gera o service worker em `public/build/` e ali ele não controlaria o app todo. Manifest e `sw.js` escritos à mão em `sistema/public/`, com endereços relativos. Ícones: `sistema/public/icones/` (192, 512 e maskable 512), `apple-touch-icon.png`, `favicon.svg`, `favicon-32.png`. A fonte externa do kit (`fonts.bunny.net`) saiu.
+
 **Arquivos:**
 - Criar: `sistema/resources/icone/bom-bocado.svg` (o "Ícone B" de `docs/prototipos/icones-bom-bocado.html`: fundo `#4FB3FF`, massa `#F7C98B`, cobertura `#6B3E26`, confeitos branco, rosa e amarelo)
 - Criar: `scripts/gerar-icones.mjs` (gera `public/icones/icone-192.png`, `icone-512.png`, `icone-maskable-512.png` (com margem de segurança) e `apple-touch-icon.png`, a partir do SVG, usando o Playwright do Passo 9)
