@@ -52,6 +52,7 @@ cd sistema && npm install && npm run build     # front-end, no Windows (Node 26)
 - 2026-11-27: projeto criado em `C:\Projetos AI\Pessoal\Receitas`; repositório `SergioOCarv/Receitas`, **público** a pedido do Sergio (por isso, segredos só em `.env` e em `C:\Receitas-producao\segredos`).
 - 2026-11-27: entrevista (P1 a P36) e design aprovados: PWA; Compartilhar do Android; Claude Haiku; notebook + Tailscale Funnel (sem domínio próprio); Laravel + MariaDB + Vue; só o Sergio cria contas; livro pessoal + livros compartilhados (membros adicionam; só o autor edita e apaga; o dono do livro "tira do livro" e a receita volta ao livro pessoal do autor); e-mail de senha por uma conta Gmail do app.
 - 2026-11-27: visual "Cor por tipo" (opção C), nome **Bom Bocado**, ícone de rosquinha com fundo azul (B), botão de compartilhar laranja com o símbolo de três círculos.
+- 2026-11-27: licença **MIT** (P42), arquivo `LICENSE` na raiz, em nome de Sergio Carvalho (SergioOCarv).
 - 2026-11-27: o plano detalha a parte técnica das Fases 0 a 2; as outras fases ganham o detalhe num passo próprio, logo antes de começar, porque dependem do teste do Instagram (Fase 0).
 
 ## Convenções

@@ -157,4 +157,6 @@ Textos, comentários e mensagens de commit são em português do Brasil.
 
 ## Licença
 
-A definir.
+[MIT](LICENSE). Você pode usar, copiar, modificar e distribuir o código, inclusive em projetos comerciais, desde que mantenha o aviso de copyright e o texto da licença. O código é oferecido como está, sem garantia.
+
+A licença cobre o código deste repositório. As fotos de comida dos protótipos vêm do [Unsplash](https://unsplash.com) e seguem a licença de lá.
