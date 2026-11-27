@@ -12,7 +12,7 @@ O Sergio faz o projeto **passo a passo, nas horas vagas**: cada passo do plano �
 
 ## Tecnologias e versões
 
-Laravel (starter kit Vue + Inertia + TypeScript), PHP 8.5, MariaDB 11.4, Vite + `vite-plugin-pwa`, Node 26 (no Windows, para o `npm`), Playwright (capturas de tela). Produção: Docker no WSL do notebook VPS-Claude, porta 8095, publicado pelo Tailscale Funnel.
+Laravel (starter kit Vue + Inertia + TypeScript), PHP 8.5, MariaDB 11.4, Vite + `vite-plugin-pwa`, Node 26 (no Windows, para o `npm`), Playwright (capturas de tela). Produção: Docker no WSL do notebook VPS-Claude, porta 8095, publicado pelo Tailscale Funnel em **https://vps-claude.tail263835.ts.net/** (Funnel liberado na conta do Tailscale em 2026-11-27; ligar: `tailscale funnel --bg <porta>`; desligar: `tailscale funnel --https=443 off`; ver: `tailscale funnel status`).
 
 ## Estrutura de pastas
 
@@ -49,8 +49,8 @@ A definir a partir do passo 8 (instalar, rodar, testar, publicar).
 
 ## Pendências e próximos passos
 
-Ver `docs/CHECKLIST.md`. Próximo: passo 3.
+Ver `docs/CHECKLIST.md`. Próximo: passo 4.
 
 ## Onde paramos
 
-- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 e 2 feitos (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). **Próximo: passo 3** (🙋 liberar o Funnel no Tailscale). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
+- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 a 3 feitos (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). Funnel liberado (endereço acima, hoje desligado). **Próximo: passo 4** (página de teste pelo Funnel; o Sergio abre no celular pelo 4G). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.

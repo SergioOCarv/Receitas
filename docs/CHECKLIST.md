@@ -15,7 +15,7 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 ## Fase 0 – Testar os riscos
 - [x] 1 🙋 Links de exemplo (3 Instagram, 3 YouTube, 3 sites)
 - [x] 2 Teste de leitura sem IA + relatório
-- [ ] 3 🙋 Liberar o Funnel no Tailscale
+- [x] 3 🙋 Liberar o Funnel no Tailscale
 - [ ] 4 Página de teste pelo Funnel (abrir no celular pelo 4G)
 - [ ] 5 `.env` vazio
 - [ ] 6 🙋 Conta e chave da API da Anthropic
