@@ -1,0 +1,13 @@
+# Segredos
+.env
+*.pfx
+*.key
+certificados/
+
+# Dependências e gerados
+node_modules/
+vendor/
+
+# Sistema
+Thumbs.db
+.DS_Store
