@@ -73,6 +73,7 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 - [ ] 46 Tirar receita do livro
 - [ ] 47 Mover receita e livro padrão
 - [ ] 48 🙋 Publicar e testar com a família
+- [ ] 48a Excluir a própria conta
 
 ## Fase 7 – Adicionar pelo Compartilhar
 - [ ] 49 Detalhar a fase
@@ -92,6 +93,7 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 - [ ] 61 Cota diária e teto mensal
 - [ ] 62 Tela de administração
 - [ ] 63 Caixa de avisos pela `agentes@`
+- [ ] 63a Indicar alguém
 
 ## Fase 9 – Compartilhar como imagem
 - [ ] 64 Detalhar a fase e gerar a imagem 9:16
@@ -108,4 +110,5 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 - [ ] 71 Aviso de falha do backup
 - [ ] 72 Ensaio de restauração
 - [ ] 73 Revisão de segurança e README
+- [ ] 73a FAQ (perguntas frequentes)
 - [ ] 74 🙋 Convidar as primeiras pessoas

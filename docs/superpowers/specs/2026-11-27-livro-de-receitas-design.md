@@ -56,14 +56,14 @@ Um livro de receitas no celular ou tablet Android. Quem vê uma receita no Insta
 - **Só o administrador (Sergio) cria contas**, por convite: informa nome e e-mail, e o app manda um link para a pessoa criar a senha. O link vale 7 dias e serve uma vez só **(decisão minha)**.
 - **Esqueci a senha:** link de redefinição por e-mail, enviado por uma conta Gmail nova, só do app, via SMTP com "senha de app" (no `.env`).
 - Ícone do usuário: uma bolinha no canto superior direito. Sem foto, mostra a inicial do nome sobre uma cor **(decisão minha)**; com foto, a foto toma o lugar da cor.
-- Tocar na bolinha abre as **opções do usuário**: trocar a foto, **mudar a senha**, escolher o **livro padrão** e sair. O administrador vê também o item "Administração".
+- Tocar na bolinha abre as **opções do usuário**: trocar a foto, **mudar a senha**, escolher o **livro padrão**, **Indicar alguém** (5.15), **FAQ** (5.13), **Excluir minha conta** (5.14) e sair. O administrador vê também o item "Administração".
 
 ### 5.2 Livros e permissões
 - Todo usuário tem um **livro pessoal**, privado e criado junto com a conta.
 - Qualquer usuário pode criar **livros compartilhados** e adicionar **usuários que já têm conta** (pelo e-mail).
 - Num livro compartilhado:
   - os membros **veem** todas as receitas e **adicionam** receitas;
-  - **só quem criou a receita pode editá-la e apagá-la**;
+  - **só quem criou a receita pode editá-la e apagá-la**; se o autor excluiu a conta ("autor removido"), quem edita e apaga é o dono do livro (5.14);
   - o **dono do livro** pode **tirar uma receita do livro**: ela não é apagada, volta para o livro pessoal de quem a criou;
   - o dono adiciona e remove membros. Quando um membro sai, as receitas dele voltam para o livro pessoal dele **(decisão minha, coerente com a regra anterior)**.
   - Se o dono apagar o livro, cada receita volta para o livro pessoal de quem a criou **(decisão minha)**.
@@ -122,7 +122,45 @@ O mesmo formulário serve para criar e editar: título, foto (câmera ou galeria
 As receitas já abertas e as fotos delas ficam guardadas no celular (*service worker*) e abrem sem internet. Adicionar, editar e buscar no servidor exigem conexão.
 
 ### 5.12 Administração (só o Sergio)
-Tela simples, com: convidar usuário; lista de usuários com opção de bloquear ou desbloquear; ajustar a cota diária e o teto mensal; ver o consumo de IA no mês.
+Tela simples, com: convidar usuário; **indicações pendentes** (5.15), com "Convidar" ou "Recusar" num toque; lista de usuários com opção de bloquear ou desbloquear; ajustar a cota diária e o teto mensal; ver o consumo de IA no mês.
+
+### 5.13 FAQ (perguntas frequentes) – incluído em 2026-11-27
+- Item **FAQ** nas opções do usuário. A tela é uma lista de perguntas.
+- **Tocar numa pergunta** abre a resposta logo abaixo dela. **Tocar em outra pergunta** fecha a anterior e abre a nova. **Tocar em qualquer outro lugar** fecha tudo, e ficam só as perguntas.
+- Perguntas, na ordem do uso (as respostas são escritas pelo Claude e aprovadas pelo Sergio no passo do FAQ):
+  1. Como adiciono uma receita do Instagram, do YouTube ou de um site?
+  2. Por que minha receita ficou como "rascunho"?
+  3. Como encontro uma receita por ingrediente?
+  4. Posso acessar as minhas receitas sem internet?
+  5. Como compartilho minha receita com um amigo?
+  6. Como crio um livro para a família?
+  7. Quem pode editar ou apagar uma receita num livro compartilhado?
+  8. Para qual livro vão as receitas que eu compartilho?
+  9. Como posso convidar alguém para usar o app?
+  10. Como mudo minha senha?
+  11. Esqueci minha senha. E agora?
+  12. Como troco a foto do meu perfil?
+  13. Como instalo o app no celular?
+  14. Por que existe um limite de receitas por dia?
+  15. Funciona no iPhone?
+  16. Não vou usar mais. Como excluo minha conta?
+- As respostas ficam num arquivo de texto do app, fácil de editar, sem precisar de banco **(decisão minha)**.
+
+### 5.14 Excluir a própria conta – incluído em 2026-11-27
+- Em **Excluir minha conta**, a pessoa digita a senha e confirma num botão vermelho "Excluir minha conta para sempre". A exclusão é na hora e não tem volta.
+- O que acontece:
+  - o **livro pessoal** e as receitas dele são apagados, com as fotos;
+  - as **receitas dela nos livros compartilhados dos outros continuam lá**, marcadas "autor removido", e passam a poder ser editadas e apagadas pelo **dono do livro**;
+  - os **livros compartilhados dos quais ela é dona** passam para o **membro mais antigo**; sem membros, são apagados;
+  - os favoritos, a foto e os pedidos de importação dela são apagados;
+  - o registro de uso da IA fica, sem o nome, para as contas do mês **(decisão minha)**.
+- O administrador não pode excluir a própria conta enquanto for o único administrador **(decisão minha)**.
+
+### 5.15 Indicar alguém – incluído em 2026-11-27
+- Botão **Indicar alguém** nas opções do usuário e na resposta da pergunta 9 do FAQ.
+- A pessoa informa o nome e o e-mail do amigo. O app responde "Indicação enviada. O administrador vai analisar."
+- O administrador recebe um aviso pela caixa de avisos (`agentes@ipsim.com.br`) e vê a indicação na Administração, onde toca em **Convidar** (manda o convite normal, 5.1) ou **Recusar** (sem aviso a ninguém) **(decisão minha)**.
+- Limite: 5 indicações por usuário por dia; um e-mail que já tem conta ou convite pendente não é indicado de novo **(decisão minha)**.
 
 ## 6. Arquitetura (decisões minhas, salvo onde indicado)
 
@@ -137,7 +175,8 @@ Tela simples, com: convidar usuário; lista de usuários com opção de bloquear
 - `convites`: e-mail, nome, token, expira_em, usado_em.
 - `livros`: nome, dono_id, é_pessoal.
 - `livro_membros`: livro_id, usuario_id.
-- `receitas`: livro_id, autor_id, situação (rascunho/pronta), título, descrição, porções, tempo, foto, link_origem, idioma_original, motivo_rascunho.
+- `indicacoes`: indicado_por_id, nome, e-mail, situação (pendente/convidada/recusada).
+- `receitas`: livro_id, autor_id (vazio = "autor removido"), situação (rascunho/pronta), título, descrição, porções, tempo, foto, link_origem, idioma_original, motivo_rascunho.
 - `ingredientes`: receita_id, ordem, texto, nome_busca.
 - `passos`: receita_id, ordem, texto.
 - `tipos` e `receita_tipo`.

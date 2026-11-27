@@ -38,6 +38,7 @@
 3. **Busca sem acento e sem maiúsculas** ("acucar" acha "Açúcar"): teste no Passo 39.
 4. **Foto da câmera grande ou em formato HEIC**: aceitar JPEG, PNG, WebP e HEIC até 15 MB e reduzir para 1600 px. Teste no Passo 32.
 5. **Receita muito longa na imagem de compartilhamento** (30 ingredientes): a fonte diminui até o mínimo e depois a receita vira duas imagens. Teste no Passo 64.
+6. **Exclusão de conta de quem é dono de um livro compartilhado com membros:** o livro passa para o membro mais antigo, e nenhuma receita de outra pessoa se perde. Teste no Passo 48a.
 
 ---
 
@@ -125,6 +126,7 @@
 | 46 | Claude | Dono do livro "tira do livro" uma receita (ela volta para o livro pessoal do autor) | Captura | 5 min |
 | 47 | Claude | Mover receita entre livros (só o autor) e escolher o livro padrão nas preferências | Captura | 5 min |
 | 48 | 🙋 + Claude | Publico; você convida alguém da família | No celular: criar o livro da família, adicionar a pessoa e conferir as permissões com ela | 15 min |
+| 48a | Claude | **Excluir a própria conta** (design 5.14): senha + confirmação; livro pessoal apagado; receitas nos livros dos outros ficam como "autor removido" (o dono do livro passa a editar); livros dos quais ela é dona passam para o membro mais antigo ou são apagados; o único administrador não se exclui. Um teste para cada regra | Captura da tela de exclusão e a lista das regras testadas | 5 min |
 
 ### Fase 7 – Adicionar pelo Compartilhar (o coração do app)
 
@@ -150,6 +152,7 @@
 | 61 | Claude | Cota diária por usuário (30) e teto mensal: estourou, a receita vira rascunho com o motivo | Captura do rascunho com o motivo | 5 min |
 | 62 | Claude | Tela de administração: usuários (bloquear e desbloquear), limites e consumo do mês | Captura | 5 min |
 | 63 | Claude | "Caixa de avisos": o app grava o aviso numa pasta, e uma tarefa do notebook envia pela `agentes@` (skill `emails`). Primeiro uso: teto em 80% e 100% | Receber um aviso de teste | 10 min |
+| 63a | Claude | **Indicar alguém** (design 5.15): formulário nas opções do usuário; aviso ao administrador pela caixa de avisos; indicações pendentes na Administração com "Convidar" ou "Recusar"; limite de 5 por dia; sem repetir quem já tem conta ou convite | Captura do formulário e da lista na Administração; receber o aviso | 10 min |
 
 ### Fase 9 – Compartilhar como imagem
 
@@ -175,6 +178,7 @@
 | 71 | Claude | Aviso de falha do backup pela caixa de avisos (Passo 63) | Receber um aviso de teste | 5 min |
 | 72 | Claude | Ensaio de restauração do backup no Docker de testes | Ler o resultado (contagens batendo) | 5 min |
 | 73 | Claude | Revisão de segurança (`/security-review`), conferência de que nenhum segredo está no Git e README público do repositório | Ler o resumo | 10 min |
+| 73a | Claude | **FAQ** (design 5.13): item nas opções do usuário; 16 perguntas; tocar abre a resposta abaixo, tocar em outra troca, tocar fora fecha tudo; respostas num arquivo de texto do app. Antes de publicar, mostro o texto de todas as respostas para você aprovar (skill `escrita-humana`) | Ler e aprovar as respostas; captura da tela com uma pergunta aberta | 15 min |
 | 74 | 🙋 | Convidar as primeiras pessoas | 🎉 | 10 min |
 
 ---
