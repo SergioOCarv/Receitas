@@ -23,7 +23,7 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 
 ## Fase 1 – Esqueleto
 - [x] 8 Laravel no Docker de testes
-- [ ] 9 Capturas de tela de celular
+- [x] 9 Capturas de tela de celular
 - [ ] 10 Tema visual
 - [ ] 11 Ícone e PWA básico
 

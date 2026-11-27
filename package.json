@@ -1,0 +1,12 @@
+{
+  "name": "bom-bocado-ferramentas",
+  "private": true,
+  "type": "module",
+  "description": "Ferramentas de apoio do projeto (capturas de tela). O app fica em sistema/.",
+  "scripts": {
+    "capturar": "node scripts/capturar.mjs"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.65.1"
+  }
+}
