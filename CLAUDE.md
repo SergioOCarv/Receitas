@@ -49,8 +49,8 @@ A definir a partir do passo 8 (instalar, rodar, testar, publicar).
 
 ## Pendências e próximos passos
 
-Ver `docs/CHECKLIST.md`. Próximo: passo 1.
+Ver `docs/CHECKLIST.md`. Próximo: passo 2.
 
 ## Onde paramos
 
-- 2026-11-27: entrevista, design, visual e plano prontos e aprovados; repositório público. **Próximo: passo 1** (🙋 o Sergio cola 3 links de receita do Instagram, 3 do YouTube e 3 de sites). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
+- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passo 1 feito (links em `pesquisa/links.md`; originais em `pesquisa/privado/`, fora do Git). **Próximo: passo 2** (teste de leitura sem IA). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
