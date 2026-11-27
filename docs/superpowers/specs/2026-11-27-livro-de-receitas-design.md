@@ -166,6 +166,7 @@ Tela simples, com: convidar usuário; **indicações pendentes** (5.15), com "Co
 
 - **Laravel** (versão estável atual, PHP 8.5) + **MariaDB** + **Vue 3** com **Inertia** e **Vite**. O PWA (manifest, ícones, service worker) vem do `vite-plugin-pwa`.
 - **Docker Compose de produção** no notebook, com quatro contêineres: `app` (nginx + php-fpm), `fila` (`queue:work`), `agendador` (`schedule:work`, para limites e backup) e `banco` (MariaDB). Fotos num volume próprio.
+- **Contêiner `leitor`** (incluído em 2026-11-27, depois do teste do passo 2): navegador sem tela (Chromium) para o Instagram e `yt-dlp` (+ `deno`) para as legendas do YouTube. O app pede "leia este link" e recebe o texto. Fica separado para não pesar no contêiner do app. Detalhes em `pesquisa/relatorio-leitura.md`.
 - **Tailscale Funnel** no notebook apontando para a porta do `app`.
 - **Fila no banco** (driver `database`), sem Redis.
 - Busca: índice FULLTEXT ou `LIKE` sobre título e ingredientes, com *collation* `utf8mb4_unicode_ci`, que já ignora acentos.

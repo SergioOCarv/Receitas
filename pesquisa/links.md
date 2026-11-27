@@ -4,7 +4,10 @@ Enviados pelo Sergio em 2026-11-27. Aqui ficam só as versões limpas; os origin
 
 ## Instagram (3)
 Os três vieram como links curtos de compartilhamento (`instagram.com/share/<código>`), que redirecionam para o post.
-Os endereços finais (`/reel/<id>` ou `/p/<id>`) entram aqui depois do passo 2.
+Endereços finais, descobertos no passo 2 (só com navegador de verdade):
+- https://www.instagram.com/reel/DfvB4LsMRI8/
+- https://www.instagram.com/reel/Dfp_ogJMwDu/
+- https://www.instagram.com/reel/DcZRp8gPcM7/
 
 ## YouTube (3)
 - https://www.youtube.com/shorts/T1wIU_EYhS4 (Short; o original tinha `?si=`, removido)

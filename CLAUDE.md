@@ -49,8 +49,8 @@ A definir a partir do passo 8 (instalar, rodar, testar, publicar).
 
 ## Pendências e próximos passos
 
-Ver `docs/CHECKLIST.md`. Próximo: passo 2.
+Ver `docs/CHECKLIST.md`. Próximo: passo 3.
 
 ## Onde paramos
 
-- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passo 1 feito (links em `pesquisa/links.md`; originais em `pesquisa/privado/`, fora do Git). **Próximo: passo 2** (teste de leitura sem IA). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
+- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 e 2 feitos (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). **Próximo: passo 3** (🙋 liberar o Funnel no Tailscale). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
