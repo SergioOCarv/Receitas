@@ -1,7 +1,7 @@
 # Bom Bocado (livro de receitas) – Design
 
 Data: 2026-11-27. Origem: entrevista com o Sergio (perguntas P1 a P30).
-Situação: **aguardando aprovação final** (visual já aprovado).
+Situação: **aprovado pelo Sergio em 2026-11-27**.
 
 Marcação: o que não tem marca foi decidido pelo Sergio. O que está como **(decisão minha)** foi preenchido pelo Claude e pode ser contestado.
 
