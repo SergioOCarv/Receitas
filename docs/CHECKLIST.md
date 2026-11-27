@@ -28,7 +28,7 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 - [x] 11 Ícone e PWA básico
 
 ## Fase 2 – Publicação inicial
-- [ ] 12 Arquivos de produção
+- [x] 12 Arquivos de produção
 - [ ] 13 🙋 Segredos de produção
 - [ ] 14 Primeira publicação + Funnel
 - [ ] 15 🙋 Instalar no celular

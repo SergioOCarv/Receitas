@@ -20,7 +20,8 @@ declare module 'vite/client' {
     }
 }
 
-const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
+// Na produção o build roda sem o .env (ele fica nos segredos): o nome fixo evita cair em "Laravel".
+const appName = import.meta.env.VITE_APP_NAME || 'Bom Bocado';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,

@@ -316,6 +316,8 @@ Antes, carregar a skill `claude-api`, para confirmar o ID do modelo, o preço e 
 
 ### Passo 12: arquivos de produção
 
+> **Feito em 2026-11-27**, com dois ajustes: (a) o front-end compila num contêiner `node:24-bookworm-slim` descartável, **depois** do `composer install` (o JavaScript importa o Ziggy de `vendor/`), em vez de no Windows; (b) `app/Support/EnderecoSeguro.php` força `https` nos links na produção (o Funnel entrega em HTTP). A `APP_KEY` é gerada pelo `-Primeira` e gravada direto em `segredos\.env`.
+
 **Arquivos (modelo: `C:\Projetos AI\Empresas\IPSim\ERP-IPSim\producao\`):**
 - Criar: `producao/Dockerfile` (`php:8.5-apache`, extensões `pdo_mysql intl zip gd exif bcmath opcache` + `mariadb-client`; `APACHE_DOCUMENT_ROOT=/app/sistema/public`)
 - Criar: `producao/compose.yaml` (projeto `receitas-producao`; serviços `web` (`127.0.0.1:8095:80`), `fila` (`queue:work --tries=1 --timeout=120`), `agendador` (`schedule:work`) e `banco` (`mariadb:11.4`, volume `dados-banco`, healthcheck); volumes `/mnt/c/Receitas-producao/codigo:/app`, `/mnt/c/Receitas-producao/segredos:/segredos:ro`, `/mnt/c/Receitas-producao/backup:/backup` e `/mnt/c/Receitas-producao/fotos:/app/sistema/storage/app/public`)
@@ -338,6 +340,7 @@ Antes, carregar a skill `claude-api`, para confirmar o ID do modelo, o preço e 
 - [ ] `publicar.ps1 -Primeira`: clona `https://github.com/SergioOCarv/Receitas.git` em `C:\Receitas-producao\codigo`, gera a `APP_KEY`, cria o banco e migra.
 - [ ] `curl -s -o /dev/null -w '%{http_code}' http://localhost:8095/login` → `200`.
 - [ ] `tailscale funnel --bg 8095`. Conferir `https://<endereço>/login` → `200` (de fora: pedir ao Sergio, pelo 4G).
+- [ ] Conferir pelo Funnel se os links da página saem em `https://` (`EnderecoSeguro`, passo 12) e se o app recebe o **IP real** de quem acessa (cabeçalho `X-Forwarded-For` do Tailscale). Se o IP chegar sempre o mesmo (o do Docker), configurar os proxies confiáveis (`trustProxies`) no `bootstrap/app.php`, porque o limite de tentativas de login usa o IP e, sem isso, um erro de senha de uma pessoa bloquearia todo mundo.
 - [ ] Tarefa no Agendador para religar a produção no login do Windows (no modelo de `instalar-tarefas.ps1 -Somente DockerLogon` do ERP) e conferir que o Funnel continua após reiniciar (o `--bg` é persistente; confirmar).
 - [ ] Atualizar o `CLAUDE.md` (endereço, comandos de produção). Commit.
 
