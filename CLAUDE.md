@@ -46,6 +46,7 @@ A definir a partir do passo 8 (instalar, rodar, testar, publicar).
 
 - Textos, comentários e commits em português do Brasil (regras do `CLAUDE.md` global).
 - Imagens para o Sergio conferir: salvar no projeto e passar como link Markdown clicável.
+- **README.md é público e escrito para quem encontra o projeto no GitHub** (pedido do Sergio, 2026-11-27). Atualizar com carinho sempre que o projeto avançar: ao concluir cada fase (tabela "Roteiro" e a nota de "Situação"), quando surgirem telas reais (trocar protótipos por capturas), quando houver como rodar o projeto (seção "Rodando o projeto") e quando mudar tecnologia ou arquitetura. Usar a skill `escrita-humana`. Nunca pôr dados pessoais nem segredos.
 
 ## Pendências e próximos passos
 
