@@ -22,7 +22,7 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 - [x] 7 Teste da IA + custo por receita
 
 ## Fase 1 – Esqueleto
-- [ ] 8 Laravel no Docker de testes
+- [x] 8 Laravel no Docker de testes
 - [ ] 9 Capturas de tela de celular
 - [ ] 10 Tema visual
 - [ ] 11 Ícone e PWA básico

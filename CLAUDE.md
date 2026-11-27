@@ -12,7 +12,7 @@ O Sergio faz o projeto **passo a passo, nas horas vagas**: cada passo do plano �
 
 ## Tecnologias e versões
 
-Laravel (starter kit Vue + Inertia + TypeScript), PHP 8.5, MariaDB 11.4, Vite + `vite-plugin-pwa`, Node 26 (no Windows, para o `npm`), Playwright (capturas de tela). Produção: Docker no WSL do notebook VPS-Claude, porta 8095, publicado pelo Tailscale Funnel em **https://vps-claude.tail263835.ts.net/** (Funnel liberado na conta do Tailscale em 2026-11-27; ligar: `tailscale funnel --bg <porta>`; desligar: `tailscale funnel --https=443 off`; ver: `tailscale funnel status`).
+**Laravel 12.74** (starter kit `laravel/vue-starter-kit`: Vue 3 + Inertia + TypeScript + Tailwind; telas de login em `sistema/resources/js/pages/auth/`), PHP 8.5, MariaDB 11.4, Vite + `vite-plugin-pwa`, Node 26 (no Windows, para o `npm`), Playwright (capturas de tela). Produção: Docker no WSL do notebook VPS-Claude, porta 8095, publicado pelo Tailscale Funnel em **https://vps-claude.tail263835.ts.net/** (Funnel liberado na conta do Tailscale em 2026-11-27; ligar: `tailscale funnel --bg <porta>`; desligar: `tailscale funnel --https=443 off`; ver: `tailscale funnel status`).
 
 ## Estrutura de pastas
 
@@ -24,16 +24,28 @@ docs/
   superpowers/specs/   design aprovado
   superpowers/plans/   plano passo a passo
   prototipos/    protótipos visuais (HTML + PNG); aprovados: telas-bom-bocado e icones-bom-bocado (B)
-  capturas/      capturas para o Sergio conferir (fora do Git)  [a partir do passo 9]
+  capturas/      capturas para o Sergio conferir (fora do Git)
 pesquisa/        testes descartáveis da Fase 0  [a partir do passo 1]
-sistema/         app Laravel  [a partir do passo 8]
+sistema/         app Laravel (endereço de testes: http://localhost:8085/receitas)
 producao/        Docker e scripts de produção  [a partir do passo 12]
-scripts/         dc.sh, capturar.mjs, gerar-icones.mjs  [a partir dos passos 8 e 9]
+scripts/         dc.sh (comando no contêiner de testes), criar-banco.php; capturar.mjs e gerar-icones.mjs a partir dos passos 9 e 11
 ```
 
 ## Comandos
 
-A definir a partir do passo 8 (instalar, rodar, testar, publicar).
+Antes de tudo, ligar o Docker de testes: `powershell -File C:\Automacao\docker-ligar.ps1` (desligar no fim: `docker-desligar.ps1`).
+
+```bash
+scripts/dc.sh php artisan test                 # todos os testes (SQLite em memória)
+scripts/dc.sh php artisan test --filter NomeDoTeste
+scripts/dc.sh php artisan migrate              # migrações no banco receitas (MariaDB de testes)
+scripts/dc.sh php ../scripts/criar-banco.php   # cria o banco receitas, se não existir
+cd sistema && npm install && npm run build     # front-end, no Windows (Node 26)
+```
+
+- O `dc.sh` roda como o usuário `ipsim` (o mesmo do Apache). Não passe `$variáveis` direto pelo `wsl.exe` (ver `LICOES.md`): use um script `.php` em `scripts/`.
+- Sem `npm run build`, as telas dão erro 500 (falta o manifest do Vite).
+- Endereço `/receitas` no Docker de testes: `Alias` em `C:\Projetos AI\Teste-de-apps-pre-producao\config\sites.conf` e `servidor.conf` (backups `.bak-2026-11-27`).
 
 ## Decisões e motivos
 
@@ -50,8 +62,8 @@ A definir a partir do passo 8 (instalar, rodar, testar, publicar).
 
 ## Pendências e próximos passos
 
-Ver `docs/CHECKLIST.md`. Próximo: passo 8.
+Ver `docs/CHECKLIST.md`. Próximo: passo 9.
 
 ## Onde paramos
 
-- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 a 7 feitos (Fase 0 concluída) (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). Funnel liberado e testado de fora (página de teste aberta pelo 4G e por um celular sem Tailscale; hoje desligado). Chave da API da Anthropic no `.env` da raiz (nome `bom-bocado`, escopo "Espaço de trabalho padrão", **vence em 01/07/2027**: trocar antes; aviso 30 dias antes previsto no passo 63), validada (lista de modelos = 200; Haiku disponível: `claude-haiku-5-5`). Passo 7 feito (`pesquisa/relatorio-ia.md`): 9/9 receitas extraídas pelo Haiku 5.5 com saída estruturada, média US$ 0,0009 (≈ R$ 0,005) por receita; no app, usar o SDK oficial PHP. **Fase 0 concluída. Próximo: passo 8** (Laravel no Docker de testes; ligar antes com `powershell -File C:\Automacao\docker-ligar.ps1`). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
+- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 a 7 feitos (Fase 0 concluída) (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). Funnel liberado e testado de fora (página de teste aberta pelo 4G e por um celular sem Tailscale; hoje desligado). Chave da API da Anthropic no `.env` da raiz (nome `bom-bocado`, escopo "Espaço de trabalho padrão", **vence em 01/07/2027**: trocar antes; aviso 30 dias antes previsto no passo 63), validada (lista de modelos = 200; Haiku disponível: `claude-haiku-5-5`). Passo 7 feito (`pesquisa/relatorio-ia.md`): 9/9 receitas extraídas pelo Haiku 5.5 com saída estruturada, média US$ 0,0009 (≈ R$ 0,005) por receita; no app, usar o SDK oficial PHP. **Fase 0 concluída.** Passo 8 feito: Laravel 12.74 em `sistema/`, sem cadastro aberto (27 testes passando), banco `receitas` no MariaDB de testes, `localhost:8085/receitas` respondendo. **Próximo: passo 9** (ferramenta de capturas de tela de celular com Playwright). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.

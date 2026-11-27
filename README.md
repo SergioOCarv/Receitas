@@ -2,7 +2,7 @@
 
 Um livro de receitas para o celular Android. Viu uma receita no Instagram, no YouTube ou num site? Toque em **Compartilhar → Bom Bocado** e pronto: o app lê o link, monta a receita com ingredientes e modo de preparo, escolhe os tipos (quente, gelado, assado, bebida…) e guarda no seu livro. Sem formulário e sem perguntas.
 
-> **Situação:** em construção. A fase de testes de viabilidade terminou em 27/11/2026 e o esqueleto do app está começando. O andamento está no [roteiro](#roteiro) abaixo.
+> **Situação:** em construção. A fase de testes de viabilidade terminou em 27/11/2026. O esqueleto do app já existe (Laravel com login, sem cadastro aberto) e ainda tem o visual padrão. O andamento está no [roteiro](#roteiro) abaixo.
 
 ![Telas do Bom Bocado nos temas claro e escuro](docs/prototipos/telas-bom-bocado.png)
 
@@ -89,7 +89,20 @@ Cada caixa é um contêiner Docker, menos o Funnel e a API da Anthropic, que sã
 
 ## Rodando o projeto
 
-Ainda não há o que rodar: o código do app começa na Fase 1. Esta seção vai trazer o passo a passo de instalação assim que o esqueleto existir.
+O app está no começo e ainda não tem as telas do Bom Bocado, mas já roda. Você precisa de PHP 8.5 com Composer, Node 26 e um MariaDB 11.4 (ou outro banco aceito pelo Laravel).
+
+```bash
+cd sistema
+composer install
+cp .env.example .env            # preencha DB_HOST, DB_DATABASE, DB_USERNAME e DB_PASSWORD
+php artisan key:generate
+php artisan migrate
+npm install && npm run build
+php artisan serve               # abre em http://localhost:8000
+php artisan test                # roda os testes
+```
+
+Não há cadastro aberto: por enquanto, crie um usuário pelo `php artisan tinker`. O comando para criar o administrador chega na Fase 3.
 
 Os testes da Fase 0 podem ser repetidos com Node 26 e uma chave da API da Anthropic. Os links do teste ficam numa pasta que não vai para o repositório, então é preciso criar o seu arquivo de links:
 
