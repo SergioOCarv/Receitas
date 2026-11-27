@@ -1,0 +1,10 @@
+{
+  "name": "bom-bocado-pesquisa",
+  "private": true,
+  "type": "module",
+  "description": "Testes descartáveis da Fase 0 (leitura de links e extração com IA)",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.14.0",
+    "zod": "^4.6.7"
+  }
+}

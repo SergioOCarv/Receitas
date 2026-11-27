@@ -19,7 +19,7 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 - [x] 4 Página de teste pelo Funnel (abrir no celular pelo 4G)
 - [x] 5 `.env` vazio
 - [x] 6 🙋 Conta e chave da API da Anthropic
-- [ ] 7 Teste da IA + custo por receita
+- [x] 7 Teste da IA + custo por receita
 
 ## Fase 1 – Esqueleto
 - [ ] 8 Laravel no Docker de testes
