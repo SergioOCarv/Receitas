@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bom Bocado – teste</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; font-family: system-ui, sans-serif;
+         background: #FFFFFF; color: #121212; text-align: center; padding: 24px; box-sizing: border-box; }
+  @media (prefers-color-scheme: dark) { body { background: #17171B; color: #F1F1F3; } }
+  svg { width: 140px; height: 140px; }
+  h1 { font-size: 30px; margin: 18px 0 6px; letter-spacing: -.5px; }
+  p { margin: 4px 0; font-size: 16px; opacity: .8; }
+  .ok { display: inline-block; margin-top: 18px; background: #2BB673; color: #fff; border-radius: 10px; padding: 8px 14px; font-weight: 700; }
+</style>
+</head>
+<body>
+<main>
+  <svg viewBox="0 0 100 100" aria-label="Ícone do Bom Bocado">
+    <defs><mask id="m"><rect width="100" height="100" fill="#fff"/><circle cx="80" cy="30" r="11" fill="#000"/><circle cx="88" cy="46" r="9" fill="#000"/><circle cx="70" cy="19" r="9" fill="#000"/></mask></defs>
+    <rect width="100" height="100" rx="26" fill="#4FB3FF"/>
+    <g mask="url(#m)" transform="rotate(-18 50 50)">
+      <ellipse cx="50" cy="54" rx="34" ry="29" fill="#F7C98B"/>
+      <ellipse cx="50" cy="49" rx="30" ry="24" fill="#6B3E26"/>
+      <circle cx="31" cy="66" r="5" fill="#6B3E26"/><circle cx="46" cy="71" r="4.5" fill="#6B3E26"/><circle cx="63" cy="69" r="5" fill="#6B3E26"/>
+      <ellipse cx="50" cy="50" rx="9" ry="7" fill="#4FB3FF"/>
+      <rect x="26" y="38.4" width="8" height="3.2" rx="1.6" fill="#fff" transform="rotate(30 30 40)"/>
+      <rect x="36" y="28.4" width="8" height="3.2" rx="1.6" fill="#FF6FA5" transform="rotate(-20 40 30)"/>
+      <rect x="59" y="31.4" width="8" height="3.2" rx="1.6" fill="#FFD23F" transform="rotate(40 63 33)"/>
+      <rect x="62" y="53.4" width="8" height="3.2" rx="1.6" fill="#fff" transform="rotate(-30 66 55)"/>
+      <rect x="32" y="56.4" width="8" height="3.2" rx="1.6" fill="#FF6FA5" transform="rotate(15 36 58)"/>
+    </g>
+  </svg>
+  <h1>Olá, Bom Bocado!</h1>
+  <p>Página de teste do passo 4.</p>
+  <p>Se você está vendo isto pelo 4G, o app vai funcionar fora de casa.</p>
+  <div class="ok">✓ Funnel funcionando</div>
+</main>
+</body>
+</html>

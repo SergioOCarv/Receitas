@@ -49,8 +49,8 @@ A definir a partir do passo 8 (instalar, rodar, testar, publicar).
 
 ## Pendências e próximos passos
 
-Ver `docs/CHECKLIST.md`. Próximo: passo 4.
+Ver `docs/CHECKLIST.md`. Próximo: passo 5.
 
 ## Onde paramos
 
-- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 a 3 feitos (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). Funnel liberado (endereço acima, hoje desligado). **Próximo: passo 4** (página de teste pelo Funnel; o Sergio abre no celular pelo 4G). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
+- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 a 4 feitos (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). Funnel liberado e testado de fora (página de teste aberta pelo 4G e por um celular sem Tailscale; hoje desligado). **Próximo: passo 5** (`.env` vazio na raiz) e depois o passo 6 🙋 (conta e chave da API da Anthropic). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
