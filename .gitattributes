@@ -1,0 +1,2 @@
+# Scripts de shell sempre com quebra de linha do Linux (rodam dentro do Docker/WSL)
+*.sh text eol=lf
