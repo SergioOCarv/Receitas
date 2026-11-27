@@ -11,3 +11,9 @@ vendor/
 # Sistema
 Thumbs.db
 .DS_Store
+
+# Capturas de conferência e saídas da pesquisa (fora do Git)
+docs/capturas/
+pesquisa/saida/
+# Links originais do Sergio (podem identificar a conta dele)
+pesquisa/privado/
