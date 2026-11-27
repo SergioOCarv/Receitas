@@ -1,0 +1,29 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=DM+Sans:wght@400;500;700&display=block" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#d9d9d9;padding:28px;font-family:'DM Sans'}
+.g{display:flex;gap:22px}
+.c{background:#fff;border-radius:20px;padding:22px;width:300px}
+.c h1{font:700 22px 'DM Sans';margin-bottom:14px}
+.home{border-radius:16px;padding:18px 0 14px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.home.cl{background:linear-gradient(160deg,#cfe3f5,#f3d9c9)}
+.home.es{background:linear-gradient(160deg,#1d2433,#2b1d24);margin-top:10px}
+.ic{width:84px;height:84px;border-radius:24px;display:grid;place-items:center}
+.home span{font:500 14px 'DM Sans'}
+.home.es span{color:#eee}
+.wm{font:700 26px 'Unbounded';letter-spacing:-.8px;margin-top:16px}
+.c p{font:14px/1.45 'DM Sans';color:#555;margin-top:8px}
+</style></head><body><div class="g" id="g"></div>
+<script>
+const N=[
+['Opção 1','Pitada','#FF6B2C','<circle cx="30" cy="44" r="7" fill="#fff"/><circle cx="46" cy="30" r="7" fill="#fff"/><circle cx="56" cy="50" r="7" fill="#fff"/>','Curto e simpático: "uma pitada de sal". Fácil de falar e de lembrar.'],
+['Opção 2','Colherada','#9B6CFF','<ellipse cx="42" cy="28" rx="13" ry="17" fill="#fff"/><rect x="38" y="42" width="8" height="30" rx="4" fill="#fff"/>','Caseiro e divertido. Um pouco mais longo no ícone.'],
+['Opção 3','Caderninho','#2BB673','<rect x="22" y="16" width="40" height="52" rx="6" fill="#fff"/><rect x="30" y="28" width="24" height="4" rx="2" fill="#2BB673"/><rect x="30" y="38" width="24" height="4" rx="2" fill="#2BB673"/><rect x="30" y="48" width="16" height="4" rx="2" fill="#2BB673"/>','Lembra o caderno de receitas da família. Afetivo, menos "moderno".'],
+['Opção 4','Receitário','#121212','<text x="42" y="56" text-anchor="middle" font-family="Unbounded" font-weight="700" font-size="40" fill="#FF6B2C">R</text>','Diz exatamente o que é. Sério, menos personalidade.'],
+['Opção 5','Bocado','#4FB3FF','<path d="M42 14a28 28 0 1 0 26 17a9 9 0 0 1-11-11a9 9 0 0 1-15-6z" fill="#fff"/>','Brincadeira com "um bocado" e com a mordida no ícone.']];
+document.getElementById('g').innerHTML=N.map(([o,n,cor,svg,d])=>`<div class="c"><h1>${o}</h1>
+<div class="home cl"><div class="ic" style="background:${cor}"><svg width="84" height="84" viewBox="0 0 84 84">${svg}</svg></div><span>${n}</span></div>
+<div class="home es"><div class="ic" style="background:${cor}"><svg width="84" height="84" viewBox="0 0 84 84">${svg}</svg></div><span>${n}</span></div>
+<div class="wm">${n}</div><p>${d}</p></div>`).join('');
+</script></body></html>

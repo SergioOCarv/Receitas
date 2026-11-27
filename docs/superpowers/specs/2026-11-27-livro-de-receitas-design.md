@@ -1,7 +1,7 @@
-# Livro de Receitas – Design
+# Bom Bocado (livro de receitas) – Design
 
 Data: 2026-11-27. Origem: entrevista com o Sergio (perguntas P1 a P30).
-Situação: **rascunho, aguardando aprovação** (o visual depende da escolha entre os protótipos).
+Situação: **aguardando aprovação final** (visual já aprovado).
 
 Marcação: o que não tem marca foi decidido pelo Sergio. O que está como **(decisão minha)** foi preenchido pelo Claude e pode ser contestado.
 
@@ -158,9 +158,20 @@ Tela simples, com: convidar usuário; lista de usuários com opção de bloquear
 - Destino: uma pasta no notebook fora do projeto **(decisão minha; o local exato entra no plano)**.
 - Se falhar, e-mail de aviso pela `agentes@ipsim.com.br` (skill `emails`).
 
-## 9. Visual
-- Visual próprio, sem a marca IPSim: moderno, limpo, com foco nas fotos. Segue o tema claro ou escuro do celular, e os dois temas são desenhados.
-- **Pendente:** protótipos lado a lado (lista, tela da receita, imagem de compartilhamento), com 5 sugestões de nome e ícone. O escolhido entra aqui.
+## 9. Visual (aprovado em 2026-11-27)
+
+Referência: `docs/prototipos/telas-bom-bocado.png` (telas) e `docs/prototipos/icones-bom-bocado.png` (ícone B). Os arquivos `.html` ao lado são a fonte dos protótipos.
+
+- **Nome do app: Bom Bocado.**
+- **Ícone:** rosquinha inclinada, mordida no canto, cobertura de chocolate com gotas e poucos confeitos (branco, rosa e amarelo), sobre **fundo azul `#4FB3FF`**, com cantos arredondados (protótipo "Ícone B").
+- **Direção visual "Cor por tipo" (opção C):** cada tipo tem cor própria, e a cor é a mesma no filtro, nas etiquetas da lista e na receita.
+  - Cores (tema claro): quente `#FF6B2C`, gelado `#4FB3FF`, assado `#C8873A`, bebida `#9B6CFF`, doce `#FF6FA5`, frio `#2BB673`. Os outros tipos ganham cores no mesmo espírito.
+  - No tema escuro, as mesmas cores um pouco mais vivas (ex.: quente `#FF7A3D`).
+- **Cores-base:** claro com fundo `#FFFFFF`, texto `#121212` e campos `#F1F1F1`; escuro com fundo `#17171B`, texto `#F1F1F3` e campos `#26262C`. O app segue o tema do celular.
+- **Fontes:** títulos e nome em **Unbounded** (700); texto em **DM Sans**.
+- **Lista:** topo com "Bom Bocado" e a bolinha do usuário; campo de busca arredondado; filtros em chips com um ponto da cor do tipo (o chip ativo fica cheio da cor); linhas com foto quadrada arredondada (68 px), título e etiquetas coloridas; rascunho com etiqueta tracejada; favorita com estrela; botão "+" redondo no canto inferior.
+- **Receita:** foto nos 25% de cima, sumindo para baixo; título grande em Unbounded começando nos 15%; etiquetas dos tipos, porções e tempo; ingredientes em linhas com divisória fina; passos com número dentro de um círculo da cor do tipo principal. No topo, sobre a foto: voltar (esquerda), estrela e **compartilhar** (direita). O botão de compartilhar tem o símbolo de três círculos ligados, em branco, dentro de um **círculo laranja `#FF6B2C`**.
+- **Imagem de compartilhamento (9:16):** foto em cima, com curva no canto inferior esquerdo; fundo laranja `#FF6B2C`; título em Unbounded branco; ingredientes e preparo resumidos; "Bom Bocado" no rodapé. É igual nos dois temas.
 
 ## 10. Plano e forma de trabalho
 - Passos de 5 a 15 minutos do tempo do Sergio. Cada passo é um pedido ("faça o passo N"): o Claude faz, testa, commita e diz o que conferir.

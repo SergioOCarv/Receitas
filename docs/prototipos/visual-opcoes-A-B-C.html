@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Figtree:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Unbounded:wght@500;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=block" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#d9d9d9;font-family:'DM Sans',sans-serif;padding:28px;display:flex;gap:40px}
+.opcao{background:#fff;border-radius:20px;padding:20px 22px 26px}
+.opcao>h1{font:700 30px 'DM Sans';margin-bottom:4px;color:#111}
+.opcao>p{font:15px 'DM Sans';color:#555;margin-bottom:16px;max-width:900px}
+.telas{display:flex;gap:18px;align-items:flex-start}
+.cel{width:360px;height:760px;border-radius:28px;overflow:hidden;position:relative;border:8px solid #1b1b1b;flex:none}
+.cel .tela{position:absolute;inset:0;overflow:hidden}
+.status{height:24px;font:600 12px 'DM Sans';display:flex;justify-content:space-between;padding:5px 16px 0}
+.legenda{font:600 13px 'DM Sans';color:#666;margin-top:8px;text-align:center}
+.story{width:270px;height:480px;border-radius:10px;overflow:hidden;position:relative;flex:none;box-shadow:0 2px 10px rgba(0,0,0,.25)}
+img{display:block;object-fit:cover}
+
+/* ---------- comum: tela da receita ---------- */
+.rec .foto{position:absolute;top:0;left:0;right:0;height:190px}      /* 25% de 760 */
+.rec .foto img{width:100%;height:100%;-webkit-mask-image:linear-gradient(#000 45%,transparent 100%);mask-image:linear-gradient(#000 45%,transparent 100%)}
+.rec .botoes{position:absolute;top:30px;left:12px;right:12px;display:flex;justify-content:space-between;z-index:3}
+.rec .botoes span{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-size:18px;background:rgba(255,255,255,.85);color:#222}
+.rec .botoes .dir{display:flex;gap:8px;width:auto;background:none}
+.rec .conteudo{position:absolute;top:114px;left:0;right:0;bottom:0;padding:0 20px;z-index:2} /* 15% de 760 */
+.rec h2{margin-bottom:10px}
+.rec ul,.rec ol{padding-left:0;list-style:none}
+
+/* =========== A: Ficha de receita =========== */
+.A{background:#fff;color:#1E2A5A;font-family:'Figtree'}
+.A .topo{display:flex;align-items:center;justify-content:space-between;padding:8px 18px 6px}
+.A .marca{font:700 26px 'Fraunces';color:#1E2A5A}
+.A .avatar{width:38px;height:38px;border-radius:50%;background:#E05A4F;color:#fff;display:grid;place-items:center;font:700 17px 'Figtree'}
+.A .busca{margin:6px 18px;border-bottom:2px solid #1E2A5A;padding:9px 2px;font-size:15px;color:#7983A6;display:flex;gap:8px}
+.A .livro{margin:8px 18px 0;font:600 13px 'Figtree';color:#1E2A5A}
+.A .chips{display:flex;gap:7px;padding:10px 18px;overflow:hidden}
+.A .chip{border:1.5px solid #1E2A5A;border-radius:6px;padding:5px 10px;font:600 13px 'Figtree';white-space:nowrap}
+.A .chip.on{background:#1E2A5A;color:#fff}
+.A .lista{margin-top:2px;background:repeating-linear-gradient(#fff 0 63px,#DCE6F5 63px 64px);position:relative}
+.A .lista:before{content:"";position:absolute;left:84px;top:0;bottom:0;border-left:1.5px solid #F0A29B}
+.A .item{display:flex;gap:16px;height:64px;align-items:center;padding:0 18px}
+.A .item img{width:50px;height:50px;border-radius:4px}
+.A .item b{font:600 17px 'Fraunces';display:block}
+.A .item small{font-size:12.5px;color:#5C6690}
+.A .rasc{color:#E05A4F;font-weight:700}
+.A .fab{position:absolute;right:18px;bottom:22px;width:56px;height:56px;border-radius:14px;background:#E05A4F;color:#fff;font-size:30px;display:grid;place-items:center}
+.A.rec .conteudo{background:linear-gradient(transparent 0, #fff 70px)}
+.A.rec .folha{background:repeating-linear-gradient(transparent 0 29px,#DCE6F5 29px 30px);border-left:1.5px solid #F0A29B;padding-left:14px;margin-left:-6px}
+.A.rec h2{font:700 30px/1.05 'Fraunces';color:#1E2A5A;padding-top:30px}
+.A.rec .meta{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.A.rec .meta span{border:1.5px solid #1E2A5A;border-radius:6px;padding:3px 8px;font:600 12.5px 'Figtree'}
+.A.rec h3{font:600 18px 'Fraunces';color:#E05A4F;line-height:30px}
+.A.rec li{font-size:15px;line-height:30px}
+.A.rec ol li span{font:700 15px 'Fraunces';color:#E05A4F;margin-right:6px}
+
+/* =========== B: Feira =========== */
+.B{background:#F6F7F2;color:#14231A;font-family:'Bricolage Grotesque'}
+.B .topo{display:flex;align-items:center;justify-content:space-between;padding:8px 16px 4px}
+.B .marca{font:800 25px 'Bricolage Grotesque';letter-spacing:-.5px}
+.B .avatar{width:38px;height:38px;border-radius:50%;overflow:hidden;border:2px solid #2E7D4F}
+.B .avatar img{width:100%;height:100%}
+.B .busca{margin:8px 16px;background:#fff;border-radius:26px;padding:12px 16px;font-size:15px;color:#788579;border:1px solid #E1E5DA}
+.B .chips{display:flex;gap:7px;padding:4px 16px 10px;overflow:hidden}
+.B .chip{background:#fff;border:1px solid #E1E5DA;border-radius:20px;padding:6px 12px;font:600 13px 'Bricolage Grotesque';white-space:nowrap}
+.B .chip.on{background:#2E7D4F;color:#fff;border-color:#2E7D4F}
+.B .lista{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:2px 16px}
+.B .item{position:relative}
+.B .item img{width:100%;height:118px;border-radius:16px}
+.B .item b{font:600 14.5px/1.2 'Bricolage Grotesque';display:block;margin-top:6px}
+.B .item small{font-size:12px;color:#5D6B60}
+.B .item .fav{position:absolute;top:8px;right:8px;width:28px;height:28px;border-radius:50%;background:#fff;color:#E4572E;display:grid;place-items:center;font-size:15px}
+.B .item .rasc{position:absolute;top:8px;left:8px;background:#E4572E;color:#fff;border-radius:10px;padding:2px 8px;font:600 11px 'Bricolage Grotesque'}
+.B .fab{position:absolute;right:16px;bottom:20px;height:52px;padding:0 20px;border-radius:26px;background:#14231A;color:#fff;font:600 15px 'Bricolage Grotesque';display:flex;align-items:center;gap:6px}
+.B.rec .conteudo{background:linear-gradient(transparent 0,#F6F7F2 80px)}
+.B.rec h2{font:800 31px/1.02 'Bricolage Grotesque';letter-spacing:-.8px;padding-top:34px}
+.B.rec .meta{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
+.B.rec .meta span{background:#fff;border:1px solid #E1E5DA;border-radius:16px;padding:4px 10px;font:600 12.5px 'Bricolage Grotesque'}
+.B.rec .meta span.t{background:#DDEFE3;border-color:#DDEFE3;color:#1F5C38}
+.B.rec .bloco{background:#fff;border-radius:18px;padding:12px 14px;margin-bottom:10px}
+.B.rec h3{font:800 16px 'Bricolage Grotesque';margin-bottom:6px}
+.B.rec li{font-size:14.5px;line-height:1.55;padding-left:14px;position:relative}
+.B.rec ul li:before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:#2E7D4F}
+.B.rec ol li{padding-left:24px}
+.B.rec ol li span{position:absolute;left:0;font-weight:800;color:#2E7D4F}
+
+/* =========== C: Cor por tipo =========== */
+.C{background:#FFFFFF;color:#121212;font-family:'DM Sans'}
+.C{--quente:#FF6B2C;--gelado:#4FB3FF;--assado:#C8873A;--bebida:#9B6CFF;--doce:#FF6FA5;--frio:#2BB673}
+.C .topo{display:flex;align-items:center;justify-content:space-between;padding:10px 18px 4px}
+.C .marca{font:700 22px 'Unbounded';letter-spacing:-.5px}
+.C .avatar{width:38px;height:38px;border-radius:50%;background:#121212;color:#fff;display:grid;place-items:center;font:700 15px 'Unbounded'}
+.C .busca{margin:10px 18px 4px;background:#F1F1F1;border-radius:12px;padding:12px 14px;font-size:15px;color:#777}
+.C .chips{display:flex;gap:7px;padding:10px 18px;overflow:hidden}
+.C .chip{border-radius:10px;padding:7px 12px;font:700 13px 'DM Sans';white-space:nowrap;background:#F1F1F1;display:flex;align-items:center;gap:6px}
+.C .chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.C .chip.on{background:var(--quente);color:#fff}
+.C .chip.on i{background:#fff!important}
+.C .lista{padding:2px 18px}
+.C .item{display:flex;gap:14px;padding:9px 0;align-items:center;border-bottom:1px solid #EEE}
+.C .item img{width:68px;height:68px;border-radius:14px}
+.C .item b{font:700 16px/1.2 'DM Sans';display:block;margin-bottom:5px}
+.C .tg{display:inline-block;border-radius:6px;padding:2px 7px;font:700 11.5px 'DM Sans';color:#fff;margin-right:4px}
+.C .rasc{background:#fff!important;color:#121212!important;border:1.5px dashed #121212}
+.C .fab{position:absolute;right:18px;bottom:22px;width:58px;height:58px;border-radius:50%;background:#121212;color:#fff;font-size:30px;display:grid;place-items:center}
+.C.rec .conteudo{background:linear-gradient(transparent 0,#fff 74px)}
+.C.rec h2{font:700 27px/1.1 'Unbounded';letter-spacing:-.8px;padding-top:34px}
+.C.rec .meta{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;align-items:center}
+.C.rec .meta .n{font:700 13px 'DM Sans';color:#555;margin-left:4px}
+.C.rec h3{font:700 14px 'Unbounded';margin:6px 0 6px}
+.C.rec li{font-size:15px;line-height:1.5;padding:5px 0;border-bottom:1px solid #F0F0F0}
+.C.rec ol li{display:flex;gap:10px}
+.C.rec ol li span{flex:none;width:24px;height:24px;border-radius:50%;background:var(--quente);color:#fff;font:700 12px 'DM Sans';display:grid;place-items:center;margin-top:1px}
+
+/* ---------- stories ---------- */
+.story .sf{height:46%;width:100%}
+.story .sc{padding:12px 16px}
+.A.story{background:#fff}
+.A.story h4{font:700 22px/1.05 'Fraunces';color:#1E2A5A;margin-bottom:6px}
+.A.story p{font:12px/1.5 'Figtree';color:#1E2A5A}
+.A.story .rod{position:absolute;bottom:10px;left:16px;right:16px;border-top:1.5px solid #F0A29B;padding-top:6px;font:600 11px 'Fraunces';color:#E05A4F}
+.B.story{background:#14231A;color:#fff}
+.B.story .sf{border-radius:0 0 26px 26px}
+.B.story h4{font:800 23px/1 'Bricolage Grotesque';margin-bottom:8px}
+.B.story p{font:12px/1.5 'Bricolage Grotesque';color:#D7E3D9}
+.B.story .rod{position:absolute;bottom:12px;left:16px;font:800 12px 'Bricolage Grotesque';color:#7FD19F}
+.C.story{background:#FF6B2C;color:#fff}
+.C.story .sf{border-radius:0 0 0 60px}
+.C.story h4{font:700 19px/1.1 'Unbounded';margin-bottom:8px}
+.C.story p{font:12.5px/1.5 'DM Sans'}
+.C.story .rod{position:absolute;bottom:12px;left:16px;font:700 11px 'Unbounded'}
+</style></head><body>
+<script>
+const U=id=>`https://images.unsplash.com/photo-${id}?w=600&q=70`;
+const R=[
+ {t:'Pizza de frigideira',f:'1565299624946-b28f40a0ae38',tp:['Assado','Salgado'],m:'25 min',fav:1},
+ {t:'Bowl de salmão grelhado',f:'1546069901-ba9599a7e63c',tp:['Frio','Prato principal'],m:'30 min'},
+ {t:'Panquecas americanas',f:'1567620905732-2d1ec7ab7445',tp:['Quente','Doce'],m:'20 min',fav:1},
+ {t:'Drink de morango e limão',f:'1497534446932-c925b458314e',tp:['Bebida','Gelado'],m:'5 min',rasc:1},
+ {t:'Risoto de parmesão',f:'1476124369491-e7addf5db371',tp:['Quente','Prato principal'],m:'40 min'},
+ {t:'Panna cotta de morango',f:'1488477181946-6428a0291777',tp:['Gelado','Doce'],m:'15 min + geladeira'},
+ {t:'Espetinhos na brasa',f:'1555939594-58d7cb561ad1',tp:['Assado','Salgado'],m:'50 min'},
+ {t:'Salada colorida',f:'1512621776951-a57141f2eefd',tp:['Frio','Vegetariano'],m:'15 min'}];
+const ING=['1½ xícara de farinha de trigo','2 colheres (sopa) de açúcar','1 colher (sopa) de fermento em pó','1 pitada de sal','1¼ xícara de leite','1 ovo','3 colheres (sopa) de manteiga derretida'];
+const PASSOS=['Misture a farinha, o açúcar, o fermento e o sal numa tigela.','Em outra tigela, bata o leite, o ovo e a manteiga.','Junte os líquidos aos secos e mexa só até incorporar.','Aqueça uma frigideira untada em fogo médio e despeje ¼ de xícara de massa.','Vire quando aparecerem bolhas e doure o outro lado.'];
+const COR={Quente:'var(--quente)',Gelado:'var(--gelado)',Assado:'var(--assado)',Bebida:'var(--bebida)',Doce:'var(--doce)',Frio:'var(--frio)',Salgado:'#777','Prato principal':'#121212',Vegetariano:'#2BB673'};
+const st='<div class="status"><span>9:41</span><span>▂▄▆ ▮</span></div>';
+const busca='Buscar por nome ou ingrediente';
+function lista(o){
+ let h=`<div class="tela ${o}">${st}`;
+ if(o==='A'){
+  h+=`<div class="topo"><div class="marca">Receitas</div><div class="avatar">S</div></div>
+  <div class="busca">⌕ <span>${busca}</span></div>
+  <div class="livro">Todos os livros ▾</div>
+  <div class="chips"><span class="chip on">Todas</span><span class="chip">★ Favoritas</span><span class="chip">Quente</span><span class="chip">Gelado</span><span class="chip">Assado</span></div>
+  <div class="lista">${R.slice(0,8).map(r=>`<div class="item"><img src="${U(r.f)}"><div><b>${r.t}</b><small>${r.rasc?'<span class="rasc">Rascunho</span> – ':''}${r.tp.join(', ')}  ${r.fav?' ★':''}</small></div></div>`).join('')}</div>
+  <div class="fab">+</div>`;
+ }
+ if(o==='B'){
+  h+=`<div class="topo"><div class="marca">Receitas</div><div class="avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100"></div></div>
+  <div class="busca">⌕ &nbsp;${busca}</div>
+  <div class="chips"><span class="chip on">Todas</span><span class="chip">★ Favoritas</span><span class="chip">Quente</span><span class="chip">Gelado</span><span class="chip">Bebida</span></div>
+  <div class="lista">${R.slice(0,6).map(r=>`<div class="item"><img src="${U(r.f)}">${r.fav?'<span class="fav">★</span>':''}${r.rasc?'<span class="rasc">Rascunho</span>':''}<b>${r.t}</b><small>${r.tp[0]} – ${r.m}</small></div>`).join('')}</div>
+  <div class="fab">＋ Nova receita</div>`;
+ }
+ if(o==='C'){
+  h+=`<div class="topo"><div class="marca">Receitas</div><div class="avatar">S</div></div>
+  <div class="busca">⌕ &nbsp;${busca}</div>
+  <div class="chips"><span class="chip on"><i></i>Quente</span><span class="chip"><i style="background:var(--gelado)"></i>Gelado</span><span class="chip"><i style="background:var(--assado)"></i>Assado</span><span class="chip"><i style="background:var(--bebida)"></i>Bebida</span></div>
+  <div class="lista">${R.slice(0,7).map(r=>`<div class="item"><img src="${U(r.f)}"><div><b>${r.t}${r.fav?' ★':''}</b>${r.rasc?'<span class="tg rasc">Rascunho</span>':''}${r.tp.map(t=>`<span class="tg" style="background:${COR[t]}">${t}</span>`).join('')}</div></div>`).join('')}</div>
+  <div class="fab">+</div>`;
+ }
+ return h+'</div>';
+}
+function receita(o){
+ const r=R[2];
+ let meta=o==='C'
+  ? r.tp.concat(['Café da manhã']).map(t=>`<span class="tg" style="background:${COR[t]||'#121212'}">${t}</span>`).join('')+'<span class="n">4 porções</span><span class="n">20 min</span>'
+  : ['Quente','Doce','Café da manhã'].map(t=>`<span class="t">${t}</span>`).join('')+'<span>4 porções</span><span>20 min</span>';
+ const ing=`<ul>${ING.map(i=>`<li>${i}</li>`).join('')}</ul>`;
+ const pas=`<ol>${PASSOS.map((p,i)=>`<li><span>${i+1}</span>${p}</li>`).join('')}</ol>`;
+ let corpo;
+ if(o==='A') corpo=`<div class="folha"><h2>${r.t}</h2><div class="meta">${meta}</div><h3>Ingredientes</h3>${ing}<h3>Modo de preparo</h3>${pas}</div>`;
+ if(o==='B') corpo=`<h2>${r.t}</h2><div class="meta">${meta}</div><div class="bloco"><h3>Ingredientes</h3>${ing}</div><div class="bloco"><h3>Modo de preparo</h3>${pas}</div>`;
+ if(o==='C') corpo=`<h2>${r.t}</h2><div class="meta">${meta}</div><h3>Ingredientes</h3>${ing}<h3 style="margin-top:12px">Modo de preparo</h3>${pas}`;
+ return `<div class="tela ${o} rec"><div class="foto"><img src="${U(r.f)}"></div>
+  <div class="botoes"><span>←</span><span class="dir"><span>★</span><span>⤴</span></span></div>
+  <div class="conteudo">${corpo}</div></div>`;
+}
+function story(o){
+ const r=R[2];
+ return `<div class="story ${o}"><img class="sf" src="${U(r.f)}"><div class="sc"><h4>${r.t}</h4>
+ <p><b>Ingredientes:</b> farinha de trigo, açúcar, fermento, sal, leite, ovo e manteiga.</p>
+ <p style="margin-top:6px"><b>Preparo:</b> misture os secos, bata os líquidos, junte, e doure ¼ de xícara de massa por vez em frigideira untada.</p></div>
+ <div class="rod">Receitas</div></div>`;
+}
+const info={
+ A:['Opção A – Ficha de receita','Papel pautado, margem vermelha e tinta azul, como as fichas de receita de antigamente, mas limpo. Lista em linhas de caderno; fonte com serifa nos títulos.'],
+ B:['Opção B – Feira','A foto manda: grade de 2 colunas com fotos grandes, verde de ervas e vermelho de tomate. Receita em blocos brancos sobre fundo claro.'],
+ C:['Opção C – Cor por tipo','Cada tipo tem cor própria (quente laranja, gelado azul, bebida roxo…), e a cor vira o filtro. Lista em linhas com etiquetas coloridas; títulos em fonte larga.']};
+for(const o of ['A','B','C']){
+ document.body.insertAdjacentHTML('beforeend',`<section class="opcao"><h1>${info[o][0]}</h1><p>${info[o][1]}</p>
+ <div class="telas"><div><div class="cel">${lista(o)}</div><div class="legenda">Lista</div></div>
+ <div><div class="cel">${receita(o)}</div><div class="legenda">Receita</div></div>
+ <div>${story(o)}<div class="legenda">Imagem para compartilhar</div></div></div></section>`);
+}
+</script>
+</body></html>

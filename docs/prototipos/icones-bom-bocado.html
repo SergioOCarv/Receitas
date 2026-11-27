@@ -1,0 +1,32 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@700&family=DM+Sans:wght@400;500;700&display=block" rel="stylesheet">
+<style>*{margin:0;padding:0;box-sizing:border-box}body{background:#d9d9d9;padding:28px;font-family:'DM Sans'}
+.g{display:flex;gap:22px}.c{background:#fff;border-radius:20px;padding:22px;width:420px}
+.c h1{font:700 22px 'DM Sans';margin-bottom:6px}.c p{font:14px/1.45 'DM Sans';color:#555;margin-bottom:14px}
+.big{display:flex;justify-content:center;margin-bottom:14px}
+.home{border-radius:16px;padding:16px 0 12px;display:flex;justify-content:center;gap:34px}
+.home.cl{background:linear-gradient(160deg,#cfe3f5,#f3d9c9)}.home.es{background:linear-gradient(160deg,#1d2433,#2b1d24);margin-top:10px}
+.home div{display:flex;flex-direction:column;align-items:center;gap:6px;font:500 13px 'DM Sans'}.home.es div{color:#eee}
+.wm{display:flex;align-items:center;gap:10px;margin-top:16px;font:700 24px 'Unbounded';letter-spacing:-.8px}
+</style></head><body><div class="g" id="g"></div>
+<script>
+function donut(fundo,massa,cob,conf,id){return `<svg viewBox="0 0 100 100" width="100%" height="100%">
+<defs><mask id="m${id}"><rect width="100" height="100" fill="#fff"/><circle cx="80" cy="30" r="11" fill="#000"/><circle cx="88" cy="46" r="9" fill="#000"/><circle cx="70" cy="19" r="9" fill="#000"/></mask></defs>
+<rect width="100" height="100" rx="26" fill="${fundo}"/>
+<g mask="url(#m${id})" transform="rotate(-18 50 50)">
+<ellipse cx="50" cy="54" rx="34" ry="29" fill="${massa}"/>
+<ellipse cx="50" cy="49" rx="30" ry="24" fill="${cob}"/>
+<circle cx="31" cy="66" r="5" fill="${cob}"/><circle cx="46" cy="71" r="4.5" fill="${cob}"/><circle cx="63" cy="69" r="5" fill="${cob}"/>
+<ellipse cx="50" cy="50" rx="9" ry="7" fill="${fundo}"/>
+${[[30,40,30],[40,30,-20],[63,33,40],[66,55,-30],[36,58,15],[54,63,70]].map(([x,y,r],i)=>`<rect x="${x-4}" y="${y-1.6}" width="8" height="3.2" rx="1.6" fill="${conf[i%conf.length]}" transform="rotate(${r} ${x} ${y})"/>`).join('')}
+</g></svg>`}
+const V=[
+['Ícone A','Fundo laranja (a cor do app e da imagem de compartilhamento), cobertura rosa.','#FF6B2C','#F7C98B','#FF6FA5',['#fff','#4FB3FF','#121212']],
+['Ícone B','Fundo azul "gelado", cobertura de chocolate. Mais próximo do print, com cara de confeitaria.','#4FB3FF','#F7C98B','#6B3E26',['#fff','#FF6FA5','#FFD23F']],
+['Ícone C','Fundo escuro, cobertura laranja. Mais sóbrio, destaca na tela escura e clara.','#1E1E24','#F7C98B','#FF6B2C',['#fff','#4FB3FF','#FF6FA5']]];
+document.getElementById('g').innerHTML=V.map(([t,d,f,m,c,cf],i)=>`<div class="c"><h1>${t}</h1><p>${d}</p>
+<div class="big"><div style="width:200px;height:200px">${donut(f,m,c,cf,'b'+i)}</div></div>
+<div class="home cl"><div><div style="width:64px;height:64px">${donut(f,m,c,cf,'c'+i)}</div>Bom Bocado</div></div>
+<div class="home es"><div><div style="width:64px;height:64px">${donut(f,m,c,cf,'e'+i)}</div>Bom Bocado</div></div>
+<div class="wm"><div style="width:40px;height:40px">${donut(f,m,c,cf,'w'+i)}</div>Bom Bocado</div></div>`).join('');
+</script></body></html>
