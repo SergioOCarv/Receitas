@@ -78,7 +78,7 @@
 
 | Passo | Quem | O que acontece | O que você confere | Seu tempo |
 |---|---|---|---|---|
-| 16 | Claude | Detalhar a Fase 3 neste plano | Ler o resumo | 5 min |
+| 16 | Claude | Detalhar a Fase 3 neste plano. **Incluir obrigatoriamente** (revisão de segurança de 2026-11-27 sobre o código do starter kit): (a) limite de tentativas (`throttle`) na confirmação de senha, na troca de senha e na exclusão de conta; (b) **tirar a troca de e-mail** das configurações do kit (o design não prevê; se um dia voltar, exigir a senha atual e confirmar o novo e-mail por link, avisando o endereço antigo). Cada item com teste | Ler o resumo | 5 min |
 | 17 | Claude | Usuários com administrador, bloqueio, foto e livro padrão; comando para criar o administrador | Nada | 0 |
 | 18 | Claude | Tela de login no visual do app, com "lembrar de mim" longo e limite de tentativas | Captura clara e escura | 5 min |
 | 19 | 🙋 | Criar a conta Gmail do app, ligar a verificação em duas etapas, gerar a "senha de app" e colar no `.env` (campos que eu deixo prontos) | Campos preenchidos | 15 min |
