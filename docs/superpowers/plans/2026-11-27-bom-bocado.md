@@ -317,7 +317,7 @@ Antes, carregar a skill `claude-api`, para confirmar o ID do modelo, o preço e 
 **Arquivos (modelo: `C:\Projetos AI\Empresas\IPSim\ERP-IPSim\producao\`):**
 - Criar: `producao/Dockerfile` (`php:8.5-apache`, extensões `pdo_mysql intl zip gd exif bcmath opcache` + `mariadb-client`; `APACHE_DOCUMENT_ROOT=/app/sistema/public`)
 - Criar: `producao/compose.yaml` (projeto `receitas-producao`; serviços `web` (`127.0.0.1:8095:80`), `fila` (`queue:work --tries=1 --timeout=120`), `agendador` (`schedule:work`) e `banco` (`mariadb:11.4`, volume `dados-banco`, healthcheck); volumes `/mnt/c/Receitas-producao/codigo:/app`, `/mnt/c/Receitas-producao/segredos:/segredos:ro`, `/mnt/c/Receitas-producao/backup:/backup` e `/mnt/c/Receitas-producao/fotos:/app/sistema/storage/app/public`)
-- Criar: `producao/env.producao.exemplo` (o `.env` de produção sem valores: `APP_ENV=production`, `APP_DEBUG=false`, `APP_URL=https://<endereço do Funnel>`, banco, e-mail e `ANTHROPIC_API_KEY`)
+- Criar: `producao/env.producao.exemplo` (o `.env` de produção sem valores: `APP_ENV=production`, `APP_DEBUG=false`, `ASSET_URL=` **vazio** (o app fica na raiz; o `/receitas` é só do Docker de testes), `APP_URL=https://<endereço do Funnel>`, banco, e-mail e `ANTHROPIC_API_KEY`)
 - Criar: `producao/publicar.ps1` (como o do ERP: pede para digitar `producao`, recusa se `codigo\` tiver mudança local, `git pull`, sobe os contêineres, `composer install --no-dev`, `npm` **no Windows** (`npm ci && npm run build` em `codigo\sistema`), `migrate --force`, caches, `storage:link`, `queue:restart`, permissões de `storage`; aceita `-WhatIf` e `-Primeira`)
 - Criar: `producao/LEIA-ME.md`
 

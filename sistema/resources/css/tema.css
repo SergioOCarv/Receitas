@@ -1,0 +1,138 @@
+/*
+ * Tema visual do Bom Bocado (design, seção 9: opção C "Cor por tipo").
+ * Protótipo de referência: docs/prototipos/telas-bom-bocado.png
+ *
+ * Duas camadas:
+ *  1. Cores do Bom Bocado (--bb-*), em hexadecimal, usadas direto nos componentes do app.
+ *  2. Variáveis do starter kit (shadcn-vue, em HSL), apontadas para as mesmas cores,
+ *     para as telas do kit (login, configurações) herdarem o visual.
+ * O tema escuro vale quando o <html> tem a classe .dark; por padrão o app segue o tema do celular.
+ */
+
+@layer base {
+    :root {
+        /* Cores-base, tema claro */
+        --bb-fundo: #ffffff;
+        --bb-texto: #121212;
+        --bb-texto-suave: #6b6b70;
+        --bb-campo: #f1f1f1;
+        --bb-divisoria: #eeeeee;
+        --bb-botao: #121212;
+        --bb-botao-texto: #ffffff;
+
+        /* Cores da marca */
+        --bb-laranja: #ff6b2c; /* compartilhar, imagem de compartilhamento, chip ativo */
+        --bb-azul: #4fb3ff; /* fundo do ícone */
+
+        /* Cores dos tipos (design 5.6). Texto das etiquetas: branco. */
+        --tipo-quente: #ff6b2c;
+        --tipo-frio: #2bb673;
+        --tipo-gelado: #4fb3ff;
+        --tipo-assado: #c8873a;
+        --tipo-frito: #c98500;
+        --tipo-cozido: #d9534f;
+        --tipo-cru-salada: #5f9e2f;
+        --tipo-bebida: #9b6cff;
+        --tipo-doce: #ff6fa5;
+        --tipo-salgado: #6b7280;
+        --tipo-sobremesa: #d6458c;
+        --tipo-lanche: #e07b2a;
+        --tipo-cafe-da-manha: #8b5a2b;
+        --tipo-prato-principal: #121212;
+        --tipo-acompanhamento: #7b8794;
+        --tipo-molho: #b5362b;
+        --tipo-pao-massa: #b8864b;
+        --tipo-vegetariano: #3d9140;
+
+        /* Variáveis do starter kit (HSL) */
+        --background: 0 0% 100%;
+        --foreground: 0 0% 7.1%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 7.1%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 7.1%;
+        --primary: 0 0% 7.1%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 0 0% 94.5%;
+        --secondary-foreground: 0 0% 7.1%;
+        --muted: 0 0% 94.5%;
+        --muted-foreground: 240 2.3% 42.9%;
+        --accent: 0 0% 94.5%;
+        --accent-foreground: 0 0% 7.1%;
+        --destructive: 358.1 75.1% 59%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 0 0% 89.8%;
+        --input: 0 0% 89.8%;
+        --ring: 17.9 100% 58.6%;
+        --radius: 0.75rem;
+        --sidebar-background: 0 0% 100%;
+        --sidebar-foreground: 0 0% 7.1%;
+        --sidebar-primary: 0 0% 7.1%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 0 0% 94.5%;
+        --sidebar-accent-foreground: 0 0% 7.1%;
+        --sidebar-border: 0 0% 89.8%;
+        --sidebar-ring: 17.9 100% 58.6%;
+    }
+
+    .dark {
+        /* Cores-base, tema escuro */
+        --bb-fundo: #17171b;
+        --bb-texto: #f1f1f3;
+        --bb-texto-suave: #a9a9b2;
+        --bb-campo: #26262c;
+        --bb-divisoria: #2a2a30;
+        --bb-botao: #f1f1f3;
+        --bb-botao-texto: #17171b;
+
+        --bb-laranja: #ff7a3d;
+
+        /* Tipos um pouco mais vivos no escuro, para manter o contraste */
+        --tipo-quente: #ff7a3d;
+        --tipo-frio: #38c784;
+        --tipo-gelado: #5ebbff;
+        --tipo-assado: #d89a4e;
+        --tipo-frito: #d99a1a;
+        --tipo-cozido: #e5625e;
+        --tipo-cru-salada: #6fb33a;
+        --tipo-bebida: #a87dff;
+        --tipo-doce: #ff7fb0;
+        --tipo-salgado: #55555e;
+        --tipo-sobremesa: #e0559a;
+        --tipo-lanche: #ea8a3c;
+        --tipo-cafe-da-manha: #9c6a3a;
+        --tipo-prato-principal: #3a3a42;
+        --tipo-acompanhamento: #6b7785;
+        --tipo-molho: #c94436;
+        --tipo-pao-massa: #c4955a;
+        --tipo-vegetariano: #4aa34d;
+
+        --background: 240 8% 9.8%;
+        --foreground: 240 7.7% 94.9%;
+        --card: 240 8% 9.8%;
+        --card-foreground: 240 7.7% 94.9%;
+        --popover: 240 7.3% 16.1%;
+        --popover-foreground: 240 7.7% 94.9%;
+        --primary: 240 7.7% 94.9%;
+        --primary-foreground: 240 8% 9.8%;
+        --secondary: 240 7.3% 16.1%;
+        --secondary-foreground: 240 7.7% 94.9%;
+        --muted: 240 7.3% 16.1%;
+        --muted-foreground: 240 5.5% 68%;
+        --accent: 240 7.3% 16.1%;
+        --accent-foreground: 240 7.7% 94.9%;
+        --destructive: 358.1 75.1% 59%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 240 7.1% 19.4%;
+        --input: 240 7.1% 19.4%;
+        --ring: 18.9 100% 62%;
+        --sidebar-background: 240 8% 9.8%;
+        --sidebar-foreground: 240 7.7% 94.9%;
+        --sidebar-primary: 240 7.7% 94.9%;
+        --sidebar-primary-foreground: 240 8% 9.8%;
+        --sidebar-accent: 240 7.3% 16.1%;
+        --sidebar-accent-foreground: 240 7.7% 94.9%;
+        --sidebar-border: 240 7.1% 19.4%;
+        --sidebar-ring: 18.9 100% 62%;
+    }
+}

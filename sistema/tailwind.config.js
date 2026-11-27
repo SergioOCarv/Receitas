@@ -12,7 +12,8 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Instrument Sans', ...defaultTheme.fontFamily.sans],
+                sans: ['DM Sans', ...defaultTheme.fontFamily.sans],
+                titulo: ['Unbounded', ...defaultTheme.fontFamily.sans],
             },
             borderRadius: {
                 lg: 'var(--radius)',
@@ -20,6 +21,18 @@ export default {
                 sm: 'calc(var(--radius) - 4px)',
             },
             colors: {
+                // Cores do Bom Bocado (resources/css/tema.css)
+                bb: {
+                    fundo: 'var(--bb-fundo)',
+                    texto: 'var(--bb-texto)',
+                    'texto-suave': 'var(--bb-texto-suave)',
+                    campo: 'var(--bb-campo)',
+                    divisoria: 'var(--bb-divisoria)',
+                    botao: 'var(--bb-botao)',
+                    'botao-texto': 'var(--bb-botao-texto)',
+                    laranja: 'var(--bb-laranja)',
+                    azul: 'var(--bb-azul)',
+                },
                 background: 'hsl(var(--background))',
                 foreground: 'hsl(var(--foreground))',
                 card: {
