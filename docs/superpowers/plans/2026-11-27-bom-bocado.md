@@ -151,7 +151,7 @@
 | 60 | Claude | Registro de cada chamada à IA (tokens e custo estimado) | Nada | 0 |
 | 61 | Claude | Cota diária por usuário (30) e teto mensal: estourou, a receita vira rascunho com o motivo | Captura do rascunho com o motivo | 5 min |
 | 62 | Claude | Tela de administração: usuários (bloquear e desbloquear), limites e consumo do mês | Captura | 5 min |
-| 63 | Claude | "Caixa de avisos": o app grava o aviso numa pasta, e uma tarefa do notebook envia pela `agentes@` (skill `emails`). Primeiro uso: teto em 80% e 100% | Receber um aviso de teste | 10 min |
+| 63 | Claude | "Caixa de avisos": o app grava o aviso numa pasta, e uma tarefa do notebook envia pela `agentes@` (skill `emails`). Primeiro uso: teto em 80% e 100%; também aviso 30 dias antes de a chave da API vencer (vence em 01/07/2027) | Receber um aviso de teste | 10 min |
 | 63a | Claude | **Indicar alguém** (design 5.15): formulário nas opções do usuário; aviso ao administrador pela caixa de avisos; indicações pendentes na Administração com "Convidar" ou "Recusar"; limite de 5 por dia; sem repetir quem já tem conta ou convite | Captura do formulário e da lista na Administração; receber o aviso | 10 min |
 
 ### Fase 9 – Compartilhar como imagem

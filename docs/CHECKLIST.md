@@ -18,7 +18,7 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 - [x] 3 🙋 Liberar o Funnel no Tailscale
 - [x] 4 Página de teste pelo Funnel (abrir no celular pelo 4G)
 - [x] 5 `.env` vazio
-- [ ] 6 🙋 Conta e chave da API da Anthropic
+- [x] 6 🙋 Conta e chave da API da Anthropic
 - [ ] 7 Teste da IA + custo por receita
 
 ## Fase 1 – Esqueleto

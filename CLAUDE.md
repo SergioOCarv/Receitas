@@ -49,8 +49,8 @@ A definir a partir do passo 8 (instalar, rodar, testar, publicar).
 
 ## Pendências e próximos passos
 
-Ver `docs/CHECKLIST.md`. Próximo: passo 6 🙋.
+Ver `docs/CHECKLIST.md`. Próximo: passo 7.
 
 ## Onde paramos
 
-- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 a 5 feitos (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). Funnel liberado e testado de fora (página de teste aberta pelo 4G e por um celular sem Tailscale; hoje desligado). `.env` da raiz criado com `ANTHROPIC_API_KEY=` vazio. **Próximo: passo 6 🙋** (o Sergio cria a conta na API da Anthropic e cola a chave no `.env`; conferir só com `grep -c '^ANTHROPIC_API_KEY=.\+' .env`, nunca mostrar o valor). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
+- 2026-11-27: entrevista, design, visual e plano aprovados; repositório público; passos 1 a 5 feitos (links em `pesquisa/links.md`, originais em `pesquisa/privado/`, fora do Git; resultado em `pesquisa/relatorio-leitura.md`: as 9 receitas legíveis; Instagram só com navegador sem tela, Short do YouTube só com `yt-dlp`). Funnel liberado e testado de fora (página de teste aberta pelo 4G e por um celular sem Tailscale; hoje desligado). Chave da API da Anthropic no `.env` da raiz (nome `bom-bocado`, escopo "Espaço de trabalho padrão", **vence em 01/07/2027**: trocar antes; aviso 30 dias antes previsto no passo 63), validada (lista de modelos = 200; Haiku disponível: `claude-haiku-5-5`). **Próximo: passo 7** (teste da IA com as 9 receitas). Para retomar: ler `docs/CHECKLIST.md` e o detalhe do passo no plano.
