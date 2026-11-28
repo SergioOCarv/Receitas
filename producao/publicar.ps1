@@ -150,9 +150,15 @@ Wsl-Artisan view:cache
 Wsl-Artisan queue:restart
 
 # 8. conferencia
-$status = 0
-try { $status = (Invoke-WebRequest -Uri "http://localhost:$Porta/login" -UseBasicParsing -TimeoutSec 30).StatusCode } catch { $status = 0 }
-if ($status -ne 200) { throw "http://localhost:$Porta/login respondeu $status (esperado 200). Veja os logs (LEIA-ME.md)." }
+# O app so aceita o host do APP_URL (trustHosts): a chamada local manda esse host no cabecalho.
+# curl.exe porque o Invoke-WebRequest do PowerShell 5.1 nao deixa trocar o Host.
+$hostApp = ''
+$linhaUrl = Select-String -Path $ArqEnv -Pattern '^APP_URL=https?://([^/\s"]+)' | Select-Object -First 1
+if ($linhaUrl) { $hostApp = $linhaUrl.Matches[0].Groups[1].Value }
+if (-not $hostApp) { throw 'APP_URL vazio ou invalido em segredos\.env.' }
+$status = (& curl.exe -s -o NUL -w '%{http_code}' --max-time 30 -H "Host: $hostApp" "http://localhost:$Porta/login")
+if (-not $status) { $status = 0 }
+if ("$status" -ne '200') { throw "http://localhost:$Porta/login respondeu $status (esperado 200). Veja os logs (LEIA-ME.md)." }
 
 # 9. versao
 $versao = (& git -C $Codigo log -1 --format='%h %s').Trim()

@@ -31,6 +31,16 @@ class IpRealTest extends TestCase
             ->assertSee('203.0.113.5');
     }
 
+    public function test_ignora_o_x_forwarded_host_mesmo_vindo_da_rede_do_docker(): void
+    {
+        // Um host forjado não pode mudar o endereço dos links (ex.: link de nova senha).
+        Route::get('/teste-host', fn () => request()->getHost());
+
+        $this->withServerVariables(['REMOTE_ADDR' => '172.20.0.1'])
+            ->get('/teste-host', ['X-Forwarded-For' => '203.0.113.5', 'X-Forwarded-Host' => 'malicioso.example'])
+            ->assertDontSee('malicioso.example');
+    }
+
     public function test_ignora_o_x_forwarded_for_vindo_de_fora(): void
     {
         // Ninguém de fora consegue fingir outro IP mandando o cabeçalho.

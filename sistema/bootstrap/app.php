@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Http\Middleware\AddLinkHeadersForPreloadedAssets;
+use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -17,7 +18,13 @@ return Application::configure(basePath: dirname(__DIR__))
         // acessa em X-Forwarded-For. Só confia no cabeçalho vindo do notebook e das redes do Docker
         // (a porta 8095 só escuta em 127.0.0.1). Sem isso, todos teriam o mesmo IP e o limite de
         // tentativas de login bloquearia todo mundo junto.
-        $middleware->trustProxies(at: ['127.0.0.1', '172.16.0.0/12', '192.168.0.0/16']);
+        // Só o IP e o https: um X-Forwarded-Host forjado mudaria o endereço dos links (ex.: nova senha).
+        $middleware->trustProxies(
+            at: ['127.0.0.1', '172.16.0.0/12', '192.168.0.0/16'],
+            headers: Request::HEADER_X_FORWARDED_FOR | Request::HEADER_X_FORWARDED_PROTO,
+        );
+        // Fora do ambiente local, só aceita o endereço do APP_URL (o do Funnel).
+        $middleware->trustHosts();
 
         $middleware->web(append: [
             HandleInertiaRequests::class,
