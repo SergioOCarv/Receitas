@@ -13,6 +13,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
+        // Produção: o Tailscale Funnel entrega pelo portão da rede do Docker (172.x) e põe o IP de quem
+        // acessa em X-Forwarded-For. Só confia no cabeçalho vindo do notebook e das redes do Docker
+        // (a porta 8095 só escuta em 127.0.0.1). Sem isso, todos teriam o mesmo IP e o limite de
+        // tentativas de login bloquearia todo mundo junto.
+        $middleware->trustProxies(at: ['127.0.0.1', '172.16.0.0/12', '192.168.0.0/16']);
+
         $middleware->web(append: [
             HandleInertiaRequests::class,
             AddLinkHeadersForPreloadedAssets::class,

@@ -16,7 +16,9 @@ COPY apache-bombocado.conf /etc/apache2/conf-enabled/zz-bombocado.conf
 ENV TZ=America/Sao_Paulo \
     APACHE_DOCUMENT_ROOT=/app/sistema/public
 RUN sed -ri 's!/var/www/html!/app/sistema/public!g' /etc/apache2/sites-available/*.conf \
- && git config --system --add safe.directory '*'
+ && git config --system --add safe.directory '*' \
+ && cp "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
+ && printf 'expose_php = Off\n' > "$PHP_INI_DIR/conf.d/zz-bombocado.ini"
 
 WORKDIR /app/sistema
 # O Apache inicia como root (porta 80); os processos PHP rodam como www-data.
