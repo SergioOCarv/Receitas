@@ -337,12 +337,14 @@ Antes, carregar a skill `claude-api`, para confirmar o ID do modelo, o preço e 
 
 ### Passo 14: primeira publicação + Funnel
 
-- [ ] `publicar.ps1 -Primeira`: clona `https://github.com/SergioOCarv/Receitas.git` em `C:\Receitas-producao\codigo`, gera a `APP_KEY`, cria o banco e migra.
-- [ ] `curl -s -o /dev/null -w '%{http_code}' http://localhost:8095/login` → `200`.
-- [ ] `tailscale funnel --bg 8095`. Conferir `https://<endereço>/login` → `200` (de fora: pedir ao Sergio, pelo 4G).
-- [ ] Conferir pelo Funnel se os links da página saem em `https://` (`EnderecoSeguro`, passo 12) e se o app recebe o **IP real** de quem acessa (cabeçalho `X-Forwarded-For` do Tailscale). Se o IP chegar sempre o mesmo (o do Docker), configurar os proxies confiáveis (`trustProxies`) no `bootstrap/app.php`, porque o limite de tentativas de login usa o IP e, sem isso, um erro de senha de uma pessoa bloquearia todo mundo.
-- [ ] Tarefa no Agendador para religar a produção no login do Windows (no modelo de `instalar-tarefas.ps1 -Somente DockerLogon` do ERP) e conferir que o Funnel continua após reiniciar (o `--bg` é persistente; confirmar).
-- [ ] Atualizar o `CLAUDE.md` (endereço, comandos de produção). Commit.
+- [x] `publicar.ps1 -Primeira`: clona `https://github.com/SergioOCarv/Receitas.git` em `C:\Receitas-producao\codigo`, gera a `APP_KEY`, cria o banco e migra.
+- [x] `curl -s -o /dev/null -w '%{http_code}' http://localhost:8095/login` → `200`.
+- [x] `tailscale funnel --bg 8095`. Conferir `https://<endereço>/login` → `200` (de fora: pedir ao Sergio, pelo 4G).
+- [x] Conferir pelo Funnel se os links da página saem em `https://` (`EnderecoSeguro`, passo 12) e se o app recebe o **IP real** de quem acessa (cabeçalho `X-Forwarded-For` do Tailscale). Se o IP chegar sempre o mesmo (o do Docker), configurar os proxies confiáveis (`trustProxies`) no `bootstrap/app.php`, porque o limite de tentativas de login usa o IP e, sem isso, um erro de senha de uma pessoa bloquearia todo mundo.
+- [x] Tarefa no Agendador para religar a produção no login do Windows (no modelo de `instalar-tarefas.ps1 -Somente DockerLogon` do ERP) e conferir que o Funnel continua após reiniciar (o `--bg` é persistente; confirmar).
+- [x] Atualizar o `CLAUDE.md` (endereço, comandos de produção). Commit.
+
+Feito em 2026-11-27. Tarefa nova não foi preciso: a `\Claude\Docker-WSL (Claude)` já tem gatilho de logon e sobe o Docker pelo systemd, e os contêineres têm `restart: unless-stopped`. O `--bg` do Funnel fica gravado no Tailscale; conferir na próxima vez que o notebook reiniciar. IP real: `trustProxies` (só `X-Forwarded-For` e `-Proto`) e `trustHosts` em `bootstrap/app.php`; a sessão passou a gravar o IP de quem acessa, e não mais o 172.20.0.1 do Docker.
 
 ### Passo 15: 🙋 instalar no celular
 

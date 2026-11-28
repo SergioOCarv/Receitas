@@ -43,7 +43,7 @@ powershell -File "C:\Projetos AI\Pessoal\Receitas\producao\publicar.ps1"
 
 O script pede para digitar `producao`, atualiza o código (`main`, só avanço simples), sobe os contêineres,
 roda o `composer`, compila o front-end num contêiner Node descartável, migra o banco, gera os caches,
-reinicia a fila e confere se `http://localhost:8095/login` responde 200. Recusa se `codigo\` tiver mudança local.
+reinicia a fila e confere se `http://localhost:8095/login` (com o host do `APP_URL`) responde 200. Recusa se `codigo\` tiver mudança local.
 
 O backup antes de publicar entra na Fase 11, quando existir o comando de backup.
 
@@ -61,6 +61,9 @@ O log da aplicação fica em `codigo\sistema\storage\logs\`.
 ## Cuidados
 
 - **HTTPS:** o Funnel entrega o app em HTTP para o contêiner. Com `APP_ENV=production` e `APP_URL` em `https://`, o app força `https` nos links (`app/Support/EnderecoSeguro.php`). Sem isso, o navegador bloqueia (conteúdo misto) e o PWA não instala.
+- **IP real e host:** o Funnel entrega pelo portão do Docker (172.20.0.1) e manda o IP de quem acessa em `X-Forwarded-For`. O `bootstrap/app.php` confia nisso só para o notebook e as redes do Docker, e só nos cabeçalhos de IP e https. O `trustHosts` recusa (400) qualquer host que não seja o do `APP_URL`: para testar pelo próprio notebook, mande o host (`curl.exe -H "Host: vps-claude.tail263835.ts.net" http://localhost:8095/login`).
+- **Religar depois de reiniciar:** a tarefa `\Claude\Docker-WSL (Claude)` (gatilho de logon) sobe o Docker; os contêineres voltam sozinhos (`restart: unless-stopped`) e o Funnel `--bg` fica gravado no Tailscale (`tailscale funnel status`).
+- **Consultas rápidas no contêiner:** `tinker` precisa de `-e HOME=/tmp` (ex.: `... exec -T -e HOME=/tmp -u www-data web php artisan tinker --execute="..."`).
 - **`ASSET_URL` fica vazio** na produção. O `/receitas` é só do Docker de testes.
 - **Front-end depois do Composer:** o JavaScript importa o Ziggy de `vendor/`.
 - Se der erro 500 por permissão: `wsl.exe -d Ubuntu-24.04 -- docker compose -p receitas-producao exec -u root web chmod -R a+rwX storage bootstrap/cache`.

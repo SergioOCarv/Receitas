@@ -30,7 +30,7 @@ Para continuar: diga "faça o passo N". 🙋 = passo do Sergio.
 ## Fase 2 – Publicação inicial
 - [x] 12 Arquivos de produção
 - [x] 13 🙋 Segredos de produção
-- [ ] 14 Primeira publicação + Funnel
+- [x] 14 Primeira publicação + Funnel
 - [ ] 15 🙋 Instalar no celular
 
 ## Fase 3 – Contas e acesso
